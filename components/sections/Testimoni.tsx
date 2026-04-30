@@ -10,6 +10,7 @@ export default function Testimoni() {
     <section id="testimoni" className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
+          <p className="text-[#1B4ED8] font-semibold text-sm uppercase tracking-widest mb-3">Testimoni Klien</p>
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-3">Kepercayaan Mereka, Prioritas Kami</h2>
           <div className="w-16 h-1 bg-[#1B4ED8] mx-auto rounded-full" />
         </div>
