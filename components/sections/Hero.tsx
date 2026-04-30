@@ -82,12 +82,24 @@ export default function Hero() {
 
           <motion.div
             {...fadeUp(0.26)}
-            className="flex flex-wrap gap-x-6 gap-y-2 mb-8"
+            className="grid grid-cols-2 gap-x-6 gap-y-3 mb-8"
+            style={{ maxWidth: '420px' }}
           >
             {['Berpengalaman & Professional', 'Pendekatan Praktis & Efisien', '100% Komitmen Klien'].map(
               (item) => (
                 <div key={item} className="flex items-center gap-2 text-sm text-gray-700">
-                  <CheckCircle2 size={15} strokeWidth={2.5} style={{ color: '#1B4ED8', flexShrink: 0 }} />
+                  <span
+                    className="flex items-center justify-center rounded-full shrink-0"
+                    style={{
+                      width: '18px',
+                      height: '18px',
+                      background: 'linear-gradient(135deg, #1B4ED8 0%, #3B82F6 100%)',
+                    }}
+                  >
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                      <path d="M2 5l2.5 2.5L8 3" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
                   {item}
                 </div>
               )
@@ -99,13 +111,11 @@ export default function Hero() {
               href="#kontak"
               className="font-semibold px-7 py-3 rounded-md transition-all"
               style={{
-                background: '#1B4ED8',
+                background: 'linear-gradient(135deg, #1B4ED8 0%, #3B82F6 100%)',
                 color: '#fff',
               }}
-              onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.background = '#1d44c0')}
-              onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.background = '#1B4ED8')}
             >
-              Konsultasi Gratis
+              Konsultasi Gratis →
             </a>
             <a
               href="#layanan"
