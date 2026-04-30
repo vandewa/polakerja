@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Instagram, Linkedin, Facebook } from 'lucide-react'
+import { Globe, Share2, Rss } from 'lucide-react'
 
 const footerLinks = {
   Layanan: ['Sertifikasi ISO', 'Legalitas & Perizinan', 'SBU & SKK', 'Sistem Manajemen', 'Pendampingan'],
@@ -17,7 +17,7 @@ export default function Footer() {
               Partner terpercaya untuk ISO, Legalitas & Perizinan, dan Sistem Manajemen bisnis Anda.
             </p>
             <div className="flex gap-3">
-              {[Instagram, Linkedin, Facebook].map((Icon, i) => (
+              {[Globe, Share2, Rss].map((Icon, i) => (
                 <a key={i} href="#" className="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center hover:bg-[#1B4ED8] transition-colors">
                   <Icon size={16} />
                 </a>
