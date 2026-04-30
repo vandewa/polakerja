@@ -19,7 +19,7 @@ export default function Hero() {
       {/* ── Background image ── */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=80"
+          src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1600&q=80"
           alt="Gedung perkantoran"
           fill
           className="object-cover object-right-top"
@@ -128,7 +128,7 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0, x: 0 }}
         transition={{ duration: 0.7, delay: 0.42, ease: 'easeOut' }}
         className="hidden lg:block absolute z-20"
-        style={{ top: '42%', right: '6%', transform: 'translateY(-30%)' }}
+        style={{ bottom: '9%', right: '8%' }}
       >
         <div
           className="bg-white rounded-2xl border border-gray-100"
