@@ -44,10 +44,30 @@ export const layananData = [
 ]
 
 export const statsData = [
-  { value: 150, suffix: '+', label: 'Proyek Selesai', description: 'Berbagai industri telah mempercayakan proyek dan legalitasnya.' },
-  { value: 100, suffix: '+', label: 'Klien Puas', description: 'Kepuasan klien selalu kami prioritaskan di setiap langkah.' },
-  { value: 98, suffix: '%', label: 'Tingkat Keberhasilan', description: 'Proses sertifikasi & perizinan berhasil hingga tahap akhir.' },
-  { value: 10, suffix: '+', label: 'Tahun Pengalaman', description: 'Tim kami berpengalaman melayani klien dari berbagai sektor.' },
+  {
+    value: '25', suffix: '+',
+    label: 'Industri Dilayani',
+    description: 'Manufaktur, konstruksi, F&B, logistik, energi, hingga jasa profesional.',
+    animate: true,
+  },
+  {
+    value: '50', suffix: '+',
+    label: 'Jenis Sertifikasi',
+    description: 'ISO 9001, 14001, 45001, 37001, 27001, OHSAS, HACCP, dan lainnya.',
+    animate: true,
+  },
+  {
+    value: '< 1', suffix: ' Jam',
+    label: 'Response WhatsApp',
+    description: 'Tim ahli kami merespons konsultasi dengan cepat di jam kerja.',
+    animate: false,
+  },
+  {
+    value: '4-6', suffix: ' Mgg',
+    label: 'Avg Processing',
+    description: 'Estimasi waktu rata-rata proses sertifikasi dari awal hingga terbit.',
+    animate: false,
+  },
 ]
 
 export const prosesData = [
