@@ -1,7 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { CheckCircle2 } from 'lucide-react'
+import { CheckCircle2, ShieldCheck } from 'lucide-react'
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
@@ -57,20 +57,16 @@ export default function Hero() {
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="hidden lg:block"
+            className="hidden lg:flex items-center justify-center"
           >
-            <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-sm ml-auto border border-gray-100">
-              <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4">
-                <div className="w-6 h-6 bg-[#1B4ED8] rounded-sm" />
+            <div className="bg-white rounded-2xl shadow-2xl p-8 w-72 border border-gray-100">
+              <div className="w-14 h-14 bg-[#1B4ED8] rounded-full flex items-center justify-center mb-5 shadow-md shadow-blue-200">
+                <ShieldCheck size={28} className="text-white" strokeWidth={1.5} />
               </div>
-              <h3 className="text-gray-900 font-bold text-xl mb-2">Solusi Tepat untuk Bisnis yang Ingin Tumbuh & Berkelanjutan</h3>
-              <p className="text-gray-500 text-sm mb-6">Partner terpercaya untuk kepatuhan dan pertumbuhan bisnis Anda.</p>
-              <div className="flex flex-wrap gap-2">
-                {['ISO · Legalitas', 'SBU · SKK · COS'].map((tag) => (
-                  <span key={tag} className="bg-blue-50 text-[#1B4ED8] text-xs font-medium px-3 py-1 rounded-full">
-                    {tag}
-                  </span>
-                ))}
+              <h3 className="text-gray-900 font-bold text-lg leading-snug mb-4">Solusi Tepat untuk Bisnis yang Ingin Tumbuh & Berkelanjutan</h3>
+              <div className="flex flex-col gap-1">
+                <p className="text-gray-400 text-sm">ISO · Legalitas · Perizinan</p>
+                <p className="text-gray-400 text-sm">SBU · SKK · COS</p>
               </div>
             </div>
           </motion.div>
