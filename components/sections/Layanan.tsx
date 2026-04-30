@@ -1,132 +1,107 @@
 'use client'
 import { motion } from 'framer-motion'
-import { ArrowUpRight } from 'lucide-react'
+import { ShieldCheck, Building2, BarChart2, Monitor, Target, ArrowUpRight } from 'lucide-react'
 import { layananData, WA_LINK } from '@/lib/data'
+
+const iconMap: Record<string,React.ElementType> = {
+  Shield:ShieldCheck, FileText:Building2, Briefcase:BarChart2, Settings:Monitor, Users:Target,
+}
+
+const cardAccents = [
+  { orb:'rgba(27,78,216,0.35)', icon:'linear-gradient(135deg,#1B4ED8,#3B82F6)', glow:'rgba(27,78,216,0.2)' },
+  { orb:'rgba(16,185,129,0.3)',  icon:'linear-gradient(135deg,#059669,#34D399)', glow:'rgba(16,185,129,0.18)' },
+  { orb:'rgba(139,92,246,0.3)',  icon:'linear-gradient(135deg,#7C3AED,#A78BFA)', glow:'rgba(139,92,246,0.18)' },
+  { orb:'rgba(245,158,11,0.3)',  icon:'linear-gradient(135deg,#D97706,#FCD34D)', glow:'rgba(245,158,11,0.18)' },
+  { orb:'rgba(239,68,68,0.28)',  icon:'linear-gradient(135deg,#DC2626,#F87171)', glow:'rgba(239,68,68,0.18)' },
+]
 
 export default function Layanan() {
   return (
-    <section id="layanan" className="py-28" style={{ background: '#FAFAF8' }}>
-      <div className="max-w-screen-xl mx-auto px-6 lg:px-12">
+    <section id="layanan" className="py-28 relative overflow-hidden">
+      {/* Section orbs */}
+      <div className="absolute pointer-events-none" style={{
+        width:'600px',height:'600px',borderRadius:'50%',top:'-100px',left:'-100px',
+        background:'radial-gradient(circle,rgba(27,78,216,0.1) 0%,transparent 65%)',filter:'blur(40px)',
+      }}/>
+      <div className="absolute pointer-events-none" style={{
+        width:'500px',height:'500px',borderRadius:'50%',bottom:'-50px',right:'5%',
+        background:'radial-gradient(circle,rgba(59,130,246,0.08) 0%,transparent 65%)',filter:'blur(40px)',
+      }}/>
 
-        {/* Section header — label left, title right */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="flex flex-col lg:flex-row lg:items-end gap-6 lg:gap-16 mb-16 pb-10 border-b border-gray-200"
+          initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}} viewport={{once:true}}
+          transition={{duration:0.6}}
+          className="text-center mb-16"
         >
-          <div className="flex items-center gap-6 lg:min-w-[200px]">
-            <span
-              className="text-xs font-semibold uppercase tracking-[0.2em] shrink-0"
-              style={{ color: '#1B4ED8' }}
-            >
-              Layanan Kami
-            </span>
-          </div>
-          <h2
-            style={{
-              fontFamily: 'Cormorant Garamond, serif',
-              fontWeight: 700,
-              fontSize: 'clamp(2rem, 4vw, 3.2rem)',
-              lineHeight: 1.1,
-              letterSpacing: '-0.02em',
-              color: '#0D1117',
-            }}
-          >
+          <span className="glass-sm inline-block text-xs font-bold uppercase tracking-[0.2em] px-4 py-1.5 rounded-full mb-5"
+            style={{color:'#93C5FD'}}>
+            Layanan Kami
+          </span>
+          <h2 className="font-bold text-white" style={{
+            fontSize:'clamp(1.8rem,3.5vw,2.8rem)', letterSpacing:'-0.025em',
+            fontFamily:'Urbanist,sans-serif', lineHeight:1.1,
+          }}>
             Solusi Lengkap untuk<br />Kebutuhan Bisnis Anda
           </h2>
         </motion.div>
 
-        {/* Service rows */}
-        <div>
-          {layananData.map((item, i) => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.07 }}
-              className="group border-b border-gray-100"
-            >
-              <a
-                href={WA_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-start lg:items-center gap-6 lg:gap-10 py-8 lg:py-9 cursor-pointer"
+        {/* Glass cards grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {layananData.map((item, i) => {
+            const Icon = iconMap[item.icon]
+            const ac = cardAccents[i % cardAccents.length]
+            const num = String(i+1).padStart(2,'0')
+            return (
+              <motion.div
+                key={item.id}
+                initial={{opacity:0,y:28}} whileInView={{opacity:1,y:0}} viewport={{once:true}}
+                transition={{duration:0.55,delay:i*0.08,ease:[0.22,1,0.36,1]}}
+                className="glass glass-hover group relative rounded-2xl p-7 flex flex-col gap-5 cursor-pointer overflow-hidden"
               >
-                {/* Big number */}
-                <span
-                  className="shrink-0 transition-all duration-300"
-                  style={{
-                    fontFamily: 'Cormorant Garamond, serif',
-                    fontWeight: 300,
-                    fontSize: 'clamp(2.4rem, 4vw, 3.2rem)',
-                    lineHeight: 1,
-                    color: '#1B4ED8',
-                    opacity: 0.18,
-                    minWidth: '68px',
-                    // group-hover handled via onMouseEnter below
-                  }}
-                  onMouseEnter={e => ((e.currentTarget as HTMLElement).style.opacity = '1')}
-                  onMouseLeave={e => ((e.currentTarget as HTMLElement).style.opacity = '0.18')}
-                >
-                  {String(i + 1).padStart(2, '0')}
+                {/* Inner top highlight gradient */}
+                <div className="absolute inset-x-0 top-0 h-px rounded-t-2xl"
+                  style={{background:`linear-gradient(90deg, transparent, ${ac.glow.replace('0.2','0.6')}, transparent)`}} />
+
+                {/* Faded number bg */}
+                <span className="absolute top-4 right-5 font-bold select-none pointer-events-none"
+                  style={{ fontSize:'5rem', color:'rgba(255,255,255,0.03)',
+                    fontFamily:'Urbanist,sans-serif', lineHeight:1 }}>
+                  {num}
                 </span>
 
+                {/* Icon */}
+                <div className="flex items-center justify-center rounded-xl shrink-0"
+                  style={{ width:'50px',height:'50px', background:ac.icon, boxShadow:`0 6px 20px ${ac.glow}` }}>
+                  <Icon size={21} color="#fff" strokeWidth={1.8} />
+                </div>
+
                 {/* Title */}
-                <h3
-                  className="shrink-0 transition-colors duration-300 group-hover:text-blue-700"
-                  style={{
-                    fontFamily: 'Cormorant Garamond, serif',
-                    fontWeight: 600,
-                    fontSize: 'clamp(1.3rem, 2.2vw, 1.75rem)',
-                    lineHeight: 1.2,
-                    color: '#111827',
-                    minWidth: '200px',
-                    maxWidth: '220px',
-                  }}
-                >
+                <h3 className="font-bold text-white" style={{fontSize:'1.02rem',fontFamily:'Urbanist,sans-serif'}}>
                   {item.title}
                 </h3>
 
-                {/* Tags — hidden on mobile, visible lg+ */}
-                <div className="hidden lg:flex flex-wrap gap-2 flex-1">
-                  {item.items.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs font-medium px-3 py-1.5 rounded-full transition-colors duration-200"
-                      style={{ background: '#F1F5F9', color: '#64748B' }}
-                    >
-                      {tag}
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 flex-grow">
+                  {item.items.map(sub => (
+                    <span key={sub} className="glass-sm text-xs font-medium px-2.5 py-1 rounded-full"
+                      style={{color:'rgba(255,255,255,0.55)'}}>
+                      {sub}
                     </span>
                   ))}
                 </div>
 
-                {/* Arrow — appears on hover */}
-                <div
-                  className="ml-auto shrink-0 flex items-center gap-1.5 text-sm font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-2 group-hover:translate-x-0"
-                  style={{ color: '#1B4ED8' }}
-                >
-                  Konsultasi
-                  <ArrowUpRight size={15} />
-                </div>
-              </a>
-
-              {/* Mobile tags */}
-              <div className="lg:hidden flex flex-wrap gap-2 pb-6 pl-[76px]">
-                {item.items.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-xs font-medium px-2.5 py-1 rounded-full"
-                    style={{ background: '#F1F5F9', color: '#64748B' }}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+                {/* CTA */}
+                <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm font-bold transition-all group-hover:gap-2.5"
+                  style={{color:'#60A5FA'}}>
+                  Konsultasi Sekarang <ArrowUpRight size={14} />
+                </a>
+              </motion.div>
+            )
+          })}
         </div>
       </div>
     </section>
