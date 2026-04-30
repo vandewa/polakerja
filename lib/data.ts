@@ -1,3 +1,7 @@
+export const WA_NUMBER = '6285234567890'
+export const WA_LINK = `https://wa.me/${WA_NUMBER}?text=Halo%20Polakerja%2C%20saya%20ingin%20konsultasi`
+export const PHONE_DISPLAY = '+62 852-3456-7890'
+
 export const navLinks = [
   { label: 'Beranda', href: '#beranda' },
   { label: 'Layanan', href: '#layanan' },
@@ -51,7 +55,7 @@ export const prosesData = [
   { step: 2, title: 'Analisis & Perencanaan', icon: 'ClipboardList', description: 'Analisis gap dan merencanakan implementasi yang tepat.' },
   { step: 3, title: 'Implementasi', icon: 'Zap', description: 'Pendampingan penerapan sistem dan dokumen secara efektif.' },
   { step: 4, title: 'Audit & Evaluasi', icon: 'Search', description: 'Audit internal dan evaluasi kesiapan untuk sertifikasi.' },
-  { step: 5, title: 'Sertifikasi & Perizinan', icon: 'Award', description: 'Mendampingi hingga terbit dan diterbitkan.' },
+  { step: 5, title: 'Sertifikasi & Perizinan', icon: 'Award', description: 'Mendampingi hingga sertifikat terbit dan diterima.' },
 ]
 
 export const tentangPoints = [
@@ -68,17 +72,27 @@ export const testimoniData = [
     name: 'Andi Pratama',
     role: 'Direktur Operasional',
     company: 'PT. Maju Bersama',
+    rating: 5,
   },
   {
     quote: 'Proses SBU dan SKK kami jadi jauh lebih mudah dan terarah berkat pendampingan dari Polakerja Consulting. Highly recommended!',
     name: 'Risa Kumiwati',
     role: 'Project Manager',
     company: 'PT. Cipta Karya',
+    rating: 5,
   },
   {
     quote: 'Dokumen sertifikasi yang disiapkan sangat rapi dan lengkap. Audit berjalan lancar dan kami berhasil mendapat sertifikat tanpa masalah.',
     name: 'Budi Santoso',
     role: 'Direktur Utama',
     company: 'PT. Solusi Prima',
+    rating: 5,
   },
+]
+
+export const clientNames = [
+  'PT. Wijaya Karya', 'PT. Adhi Karya', 'PT. Pembangunan Perumahan',
+  'PT. Waskita Karya', 'PT. Hutama Karya', 'PT. Nindya Karya',
+  'PT. Brantas Abipraya', 'PT. Jasa Marga', 'PT. Pelabuhan Indonesia',
+  'PT. Angkasa Pura', 'PT. KAI Commuter', 'PT. Indofood Sukses',
 ]

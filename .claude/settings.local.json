@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell($src = Get-Item \"C:\\\\Users\\\\User\\\\Downloads\\\\2 \\(1\\).png\"; $dst = Get-Item \"C:\\\\laragon\\\\www\\\\polakerja\\\\public\\\\logo-icon.png\"; Write-Host \"Source size: $\\($src.Length\\)\"; Write-Host \"Dest size: $\\($dst.Length\\)\")"
+    ]
+  }
+}

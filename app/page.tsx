@@ -1,6 +1,8 @@
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
+import WhatsAppButton from '@/components/layout/WhatsAppButton'
 import Hero from '@/components/sections/Hero'
+import LogoStrip from '@/components/sections/LogoStrip'
 import Layanan from '@/components/sections/Layanan'
 import Stats from '@/components/sections/Stats'
 import Proses from '@/components/sections/Proses'
@@ -14,6 +16,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <LogoStrip />
         <Layanan />
         <Stats />
         <Proses />
@@ -22,6 +25,7 @@ export default function Home() {
         <CTA />
       </main>
       <Footer />
+      <WhatsAppButton />
     </>
   )
 }
