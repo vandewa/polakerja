@@ -1,165 +1,145 @@
 'use client'
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { testimoniData } from '@/lib/data'
-import { Star } from 'lucide-react'
-
-const avatarColors = ['#1B4ED8', '#7C3AED', '#059669']
-
-function getInitials(name: string) {
-  return name.split(' ').map(n => n[0]).slice(0, 2).join('')
-}
+import { Star, ChevronLeft, ChevronRight } from 'lucide-react'
 
 export default function Testimoni() {
   const [active, setActive] = useState(0)
+  const [dir, setDir] = useState(1)
+
+  const go = (next: number) => {
+    setDir(next > active ? 1 : -1)
+    setActive(next)
+  }
+  const prev = () => go((active - 1 + testimoniData.length) % testimoniData.length)
+  const next = () => go((active + 1) % testimoniData.length)
+
+  const item = testimoniData[active]
 
   return (
-    <section id="testimoni" className="py-28" style={{ background: '#F8FAFF' }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="testimoni" className="py-28" style={{ background: '#FAFAF8' }}>
+      <div className="max-w-screen-xl mx-auto px-6 lg:px-12">
 
-        {/* Header */}
-        <div className="text-center mb-16">
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-            className="font-bold text-sm uppercase tracking-[0.18em] mb-4"
+        {/* Top row: label + counter + nav */}
+        <div className="flex items-center justify-between mb-14">
+          <span
+            className="text-xs font-semibold uppercase tracking-[0.2em]"
             style={{ color: '#1B4ED8' }}
           >
             Testimoni Klien
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.06 }}
-            className="font-extrabold text-gray-900"
-            style={{
-              fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)',
-              fontFamily: 'Syne, sans-serif',
-              letterSpacing: '-0.02em',
-            }}
-          >
-            Kepercayaan Mereka,<br />Prioritas Kami
-          </motion.h2>
-        </div>
-
-        {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-5 mb-10">
-          {testimoniData.map((item, i) => {
-            const isActive = active === i
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 28 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.55, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                onClick={() => setActive(i)}
-                className="relative rounded-2xl p-7 cursor-pointer transition-all duration-300 flex flex-col"
-                style={{
-                  background: isActive
-                    ? 'linear-gradient(135deg, #0F2040 0%, #1E3A5F 100%)'
-                    : '#fff',
-                  border: isActive ? '1px solid rgba(59,130,246,0.3)' : '1px solid #E5E7EB',
-                  boxShadow: isActive
-                    ? '0 20px 60px rgba(27,78,216,0.25)'
-                    : '0 2px 12px rgba(0,0,0,0.04)',
-                  transform: isActive ? 'translateY(-4px)' : 'translateY(0)',
-                }}
+          </span>
+          <div className="flex items-center gap-6">
+            <span className="text-sm" style={{ color: '#9CA3AF' }}>
+              {String(active + 1).padStart(2, '0')} /{' '}
+              {String(testimoniData.length).padStart(2, '0')}
+            </span>
+            <div className="flex gap-2">
+              <button
+                onClick={prev}
+                className="w-10 h-10 rounded-full border flex items-center justify-center transition-all hover:bg-gray-900 hover:border-gray-900 hover:text-white"
+                style={{ borderColor: '#D1D5DB', color: '#374151' }}
               >
-                {/* Stars */}
-                <div className="flex gap-0.5 mb-5">
-                  {Array.from({ length: item.rating }).map((_, si) => (
-                    <Star
-                      key={si}
-                      size={14}
-                      style={{ color: isActive ? '#FCD34D' : '#F59E0B', fill: isActive ? '#FCD34D' : '#F59E0B' }}
-                    />
-                  ))}
-                </div>
-
-                {/* Quote mark */}
-                <div
-                  className="font-serif font-black mb-3 select-none leading-none"
-                  style={{
-                    fontSize: '3rem',
-                    color: isActive ? 'rgba(96,165,250,0.4)' : 'rgba(27,78,216,0.15)',
-                    lineHeight: 0.8,
-                  }}
-                  aria-hidden="true"
-                >
-                  &ldquo;
-                </div>
-
-                {/* Quote text */}
-                <p
-                  className="text-sm leading-relaxed mb-6 flex-grow"
-                  style={{ color: isActive ? 'rgba(255,255,255,0.75)' : '#6B7280' }}
-                >
-                  {item.quote}
-                </p>
-
-                {/* Author */}
-                <div className="flex items-center gap-3">
-                  <div
-                    className="flex items-center justify-center rounded-full shrink-0 font-bold text-white text-xs"
-                    style={{
-                      width: '40px',
-                      height: '40px',
-                      background: isActive
-                        ? 'rgba(59,130,246,0.3)'
-                        : `${avatarColors[i % avatarColors.length]}22`,
-                      border: isActive
-                        ? '1px solid rgba(59,130,246,0.4)'
-                        : `1px solid ${avatarColors[i % avatarColors.length]}33`,
-                      color: isActive ? '#93C5FD' : avatarColors[i % avatarColors.length],
-                    }}
-                  >
-                    {getInitials(item.name)}
-                  </div>
-                  <div>
-                    <p
-                      className="font-bold text-sm"
-                      style={{ color: isActive ? '#fff' : '#111827' }}
-                    >
-                      {item.name}
-                    </p>
-                    <p
-                      className="text-xs"
-                      style={{ color: isActive ? 'rgba(255,255,255,0.5)' : '#9CA3AF' }}
-                    >
-                      {item.role} · {item.company}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Active glow */}
-                {isActive && (
-                  <div
-                    className="absolute inset-0 rounded-2xl pointer-events-none"
-                    style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.08)' }}
-                  />
-                )}
-              </motion.div>
-            )
-          })}
+                <ChevronLeft size={18} />
+              </button>
+              <button
+                onClick={next}
+                className="w-10 h-10 rounded-full border flex items-center justify-center transition-all hover:bg-gray-900 hover:border-gray-900 hover:text-white"
+                style={{ borderColor: '#D1D5DB', color: '#374151' }}
+              >
+                <ChevronRight size={18} />
+              </button>
+            </div>
+          </div>
         </div>
 
-        {/* Dots indicator */}
-        <div className="flex justify-center gap-2">
+        {/* Stars */}
+        <div className="flex gap-1 mb-8">
+          {Array.from({ length: item.rating }).map((_, i) => (
+            <Star key={i} size={16} style={{ fill: '#F59E0B', color: '#F59E0B' }} />
+          ))}
+        </div>
+
+        {/* Large pullquote */}
+        <div className="overflow-hidden mb-12">
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.blockquote
+              key={active}
+              initial={{ opacity: 0, x: dir * 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: dir * -40 }}
+              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+              style={{
+                fontFamily: 'Cormorant Garamond, serif',
+                fontWeight: 400,
+                fontStyle: 'italic',
+                fontSize: 'clamp(1.5rem, 3.5vw, 2.6rem)',
+                lineHeight: 1.45,
+                color: '#111827',
+                letterSpacing: '-0.01em',
+                maxWidth: '900px',
+              }}
+            >
+              &ldquo;{item.quote}&rdquo;
+            </motion.blockquote>
+          </AnimatePresence>
+        </div>
+
+        {/* Thin rule */}
+        <div className="h-px mb-7" style={{ background: '#E5E7EB' }} />
+
+        {/* Author */}
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={`author-${active}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="flex items-center gap-5"
+          >
+            {/* Avatar initials */}
+            <div
+              className="flex items-center justify-center rounded-full font-semibold text-sm shrink-0"
+              style={{
+                width: '48px',
+                height: '48px',
+                background: '#EFF6FF',
+                color: '#1B4ED8',
+                border: '1px solid #DBEAFE',
+                fontFamily: 'Cormorant Garamond, serif',
+                fontWeight: 600,
+                fontSize: '1.1rem',
+              }}
+            >
+              {item.name.split(' ').map(n => n[0]).slice(0, 2).join('')}
+            </div>
+
+            <div>
+              <p
+                className="font-semibold"
+                style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.15rem', color: '#111827' }}
+              >
+                {item.name}
+              </p>
+              <p className="text-sm" style={{ color: '#9CA3AF' }}>
+                {item.role} · {item.company}
+              </p>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Progress dots */}
+        <div className="flex gap-2 mt-10">
           {testimoniData.map((_, i) => (
             <button
               key={i}
-              onClick={() => setActive(i)}
+              onClick={() => go(i)}
               className="rounded-full transition-all duration-300"
               style={{
-                height: '8px',
-                width: active === i ? '24px' : '8px',
-                background: active === i
-                  ? 'linear-gradient(90deg, #1B4ED8, #3B82F6)'
-                  : '#D1D5DB',
+                height: '3px',
+                width: active === i ? '32px' : '12px',
+                background: active === i ? '#1B4ED8' : '#D1D5DB',
               }}
             />
           ))}

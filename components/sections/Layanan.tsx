@@ -1,146 +1,132 @@
 'use client'
 import { motion } from 'framer-motion'
-import { ShieldCheck, Building2, BarChart2, Monitor, Target } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import { layananData, WA_LINK } from '@/lib/data'
-
-const iconMap: Record<string, React.ElementType> = {
-  Shield: ShieldCheck,
-  FileText: Building2,
-  Briefcase: BarChart2,
-  Settings: Monitor,
-  Users: Target,
-}
-
-const accentColors = [
-  { bg: 'rgba(27,78,216,0.08)', icon: '#1B4ED8', border: 'rgba(27,78,216,0.15)' },
-  { bg: 'rgba(16,185,129,0.08)', icon: '#059669', border: 'rgba(16,185,129,0.15)' },
-  { bg: 'rgba(139,92,246,0.08)', icon: '#7C3AED', border: 'rgba(139,92,246,0.15)' },
-  { bg: 'rgba(245,158,11,0.08)', icon: '#D97706', border: 'rgba(245,158,11,0.15)' },
-  { bg: 'rgba(239,68,68,0.08)', icon: '#DC2626', border: 'rgba(239,68,68,0.15)' },
-]
 
 export default function Layanan() {
   return (
-    <section id="layanan" className="py-28" style={{ backgroundColor: '#ffffff' }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="layanan" className="py-28" style={{ background: '#FAFAF8' }}>
+      <div className="max-w-screen-xl mx-auto px-6 lg:px-12">
 
-        {/* Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
-          <div>
-            <p
-              className="font-bold text-sm uppercase tracking-[0.18em] mb-4"
+        {/* Section header — label left, title right */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col lg:flex-row lg:items-end gap-6 lg:gap-16 mb-16 pb-10 border-b border-gray-200"
+        >
+          <div className="flex items-center gap-6 lg:min-w-[200px]">
+            <span
+              className="text-xs font-semibold uppercase tracking-[0.2em] shrink-0"
               style={{ color: '#1B4ED8' }}
             >
               Layanan Kami
-            </p>
-            <h2
-              className="font-extrabold text-gray-900 leading-tight"
-              style={{
-                fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)',
-                fontFamily: 'Syne, sans-serif',
-                letterSpacing: '-0.02em',
-              }}
-            >
-              Solusi Lengkap untuk<br />
-              Kebutuhan Bisnis Anda
-            </h2>
+            </span>
           </div>
-          <p className="text-gray-500 text-sm leading-relaxed lg:max-w-xs lg:text-right">
-            Dari sertifikasi internasional hingga legalitas perizinan — kami tangani semuanya untuk Anda.
-          </p>
-        </div>
+          <h2
+            style={{
+              fontFamily: 'Cormorant Garamond, serif',
+              fontWeight: 700,
+              fontSize: 'clamp(2rem, 4vw, 3.2rem)',
+              lineHeight: 1.1,
+              letterSpacing: '-0.02em',
+              color: '#0D1117',
+            }}
+          >
+            Solusi Lengkap untuk<br />Kebutuhan Bisnis Anda
+          </h2>
+        </motion.div>
 
-        {/* Cards grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {layananData.map((item, i) => {
-            const Icon = iconMap[item.icon]
-            const accent = accentColors[i % accentColors.length]
-            const num = String(i + 1).padStart(2, '0')
-
-            return (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 32 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: -6 }}
-                className="group relative rounded-2xl p-7 flex flex-col gap-5 cursor-pointer overflow-hidden"
-                style={{
-                  background: '#fff',
-                  border: '1px solid #E5E7EB',
-                  boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
-                  transition: 'box-shadow 0.3s ease, border-color 0.3s ease',
-                }}
-                onMouseEnter={e => {
-                  const el = e.currentTarget as HTMLElement
-                  el.style.boxShadow = '0 16px 48px rgba(27,78,216,0.12)'
-                  el.style.borderColor = accent.border
-                }}
-                onMouseLeave={e => {
-                  const el = e.currentTarget as HTMLElement
-                  el.style.boxShadow = '0 2px 12px rgba(0,0,0,0.04)'
-                  el.style.borderColor = '#E5E7EB'
-                }}
+        {/* Service rows */}
+        <div>
+          {layananData.map((item, i) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.07 }}
+              className="group border-b border-gray-100"
+            >
+              <a
+                href={WA_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start lg:items-center gap-6 lg:gap-10 py-8 lg:py-9 cursor-pointer"
               >
-                {/* Faded number background */}
+                {/* Big number */}
                 <span
-                  className="absolute top-4 right-5 font-extrabold select-none pointer-events-none"
+                  className="shrink-0 transition-all duration-300"
                   style={{
-                    fontSize: '4.5rem',
-                    color: 'rgba(0,0,0,0.04)',
-                    fontFamily: 'Syne, sans-serif',
+                    fontFamily: 'Cormorant Garamond, serif',
+                    fontWeight: 300,
+                    fontSize: 'clamp(2.4rem, 4vw, 3.2rem)',
                     lineHeight: 1,
+                    color: '#1B4ED8',
+                    opacity: 0.18,
+                    minWidth: '68px',
+                    // group-hover handled via onMouseEnter below
                   }}
+                  onMouseEnter={e => ((e.currentTarget as HTMLElement).style.opacity = '1')}
+                  onMouseLeave={e => ((e.currentTarget as HTMLElement).style.opacity = '0.18')}
                 >
-                  {num}
+                  {String(i + 1).padStart(2, '0')}
                 </span>
-
-                {/* Icon */}
-                <div
-                  className="flex items-center justify-center rounded-xl shrink-0"
-                  style={{ width: '52px', height: '52px', background: accent.bg, border: `1px solid ${accent.border}` }}
-                >
-                  <Icon size={22} style={{ color: accent.icon }} strokeWidth={1.8} />
-                </div>
 
                 {/* Title */}
                 <h3
-                  className="font-bold text-gray-900"
-                  style={{ fontSize: '1.05rem', fontFamily: 'Syne, sans-serif' }}
+                  className="shrink-0 transition-colors duration-300 group-hover:text-blue-700"
+                  style={{
+                    fontFamily: 'Cormorant Garamond, serif',
+                    fontWeight: 600,
+                    fontSize: 'clamp(1.3rem, 2.2vw, 1.75rem)',
+                    lineHeight: 1.2,
+                    color: '#111827',
+                    minWidth: '200px',
+                    maxWidth: '220px',
+                  }}
                 >
                   {item.title}
                 </h3>
 
-                {/* Service tags */}
-                <div className="flex flex-wrap gap-2 flex-grow">
-                  {item.items.map((sub) => (
+                {/* Tags — hidden on mobile, visible lg+ */}
+                <div className="hidden lg:flex flex-wrap gap-2 flex-1">
+                  {item.items.map((tag) => (
                     <span
-                      key={sub}
-                      className="text-xs font-medium px-2.5 py-1 rounded-full"
-                      style={{ background: '#F3F4F6', color: '#6B7280' }}
+                      key={tag}
+                      className="text-xs font-medium px-3 py-1.5 rounded-full transition-colors duration-200"
+                      style={{ background: '#F1F5F9', color: '#64748B' }}
                     >
-                      {sub}
+                      {tag}
                     </span>
                   ))}
                 </div>
 
-                {/* CTA */}
-                <a
-                  href={WA_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm font-bold transition-colors"
-                  style={{ color: accent.icon }}
-                  onMouseEnter={e => (e.currentTarget.style.opacity = '0.7')}
-                  onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
+                {/* Arrow — appears on hover */}
+                <div
+                  className="ml-auto shrink-0 flex items-center gap-1.5 text-sm font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-2 group-hover:translate-x-0"
+                  style={{ color: '#1B4ED8' }}
                 >
-                  Konsultasi Sekarang
-                  <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
-                </a>
-              </motion.div>
-            )
-          })}
+                  Konsultasi
+                  <ArrowUpRight size={15} />
+                </div>
+              </a>
+
+              {/* Mobile tags */}
+              <div className="lg:hidden flex flex-wrap gap-2 pb-6 pl-[76px]">
+                {item.items.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-xs font-medium px-2.5 py-1 rounded-full"
+                    style={{ background: '#F1F5F9', color: '#64748B' }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

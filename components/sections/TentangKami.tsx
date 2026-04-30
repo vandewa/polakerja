@@ -1,183 +1,147 @@
 'use client'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { UserCheck, ShieldCheck, Leaf, ArrowRight } from 'lucide-react'
-import { tentangPoints, WA_LINK } from '@/lib/data'
-
-const badges = [
-  { icon: UserCheck, label: 'Profesional' },
-  { icon: ShieldCheck, label: 'Terpercaya' },
-  { icon: Leaf, label: 'Berkelanjutan' },
-]
-
-const GradientCheck = () => (
-  <span
-    className="flex items-center justify-center rounded-full shrink-0"
-    style={{
-      width: '22px',
-      height: '22px',
-      background: 'linear-gradient(135deg, #1B4ED8 0%, #3B82F6 100%)',
-      boxShadow: '0 3px 8px rgba(27,78,216,0.3)',
-    }}
-  >
-    <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
-      <path d="M2 5.5l2.8 2.8L9 3" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  </span>
-)
+import { ArrowUpRight } from 'lucide-react'
+import { tentangPoints, WA_LINK, PHONE_DISPLAY } from '@/lib/data'
 
 export default function TentangKami() {
   return (
-    <section id="tentang" className="py-28 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+    <section id="tentang" className="overflow-hidden">
+      <div className="grid lg:grid-cols-2">
 
-          {/* Left column */}
-          <motion.div
-            initial={{ opacity: 0, x: -36 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        {/* Left — text, contained */}
+        <motion.div
+          initial={{ opacity: 0, x: -32 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col justify-center py-24 px-8 lg:px-16 xl:px-20"
+          style={{ background: '#FAFAF8', minHeight: '600px' }}
+        >
+          <span
+            className="text-xs font-semibold uppercase tracking-[0.2em] mb-5 block"
+            style={{ color: '#1B4ED8' }}
           >
-            <span
-              className="inline-block text-xs font-bold uppercase tracking-[0.16em] px-3.5 py-1.5 rounded-full mb-5"
-              style={{ background: '#EFF6FF', color: '#1B4ED8', border: '1px solid #BFDBFE' }}
-            >
-              Tentang Kami
-            </span>
+            Tentang Kami
+          </span>
 
-            <h2
-              className="font-extrabold text-gray-900 mb-5 leading-tight"
-              style={{
-                fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)',
-                fontFamily: 'Syne, sans-serif',
-                letterSpacing: '-0.02em',
-              }}
-            >
-              Mengapa Memilih<br />
-              <span style={{ color: '#1B4ED8' }}>Polakerja Consulting?</span>
-            </h2>
+          <h2
+            className="mb-6"
+            style={{
+              fontFamily: 'Cormorant Garamond, serif',
+              fontWeight: 700,
+              fontSize: 'clamp(2rem, 3.5vw, 3rem)',
+              lineHeight: 1.1,
+              letterSpacing: '-0.02em',
+              color: '#0D1117',
+            }}
+          >
+            Mengapa Memilih<br />
+            <span style={{ color: '#1B4ED8' }}>Polakerja Consulting?</span>
+          </h2>
 
-            <p className="text-gray-500 mb-8 leading-relaxed" style={{ fontSize: '0.95rem' }}>
-              Kami bukan hanya konsultan, tapi partner strategis yang berkomitmen
-              membantu bisnis Anda tumbuh secara terstruktur, patuh terhadap regulasi,
-              dan siap bersaing di level yang lebih tinggi.
-            </p>
+          <p className="text-sm leading-loose mb-8" style={{ color: '#6B7280', maxWidth: '380px' }}>
+            Kami bukan sekadar konsultan — kami partner strategis yang berkomitmen membantu bisnis Anda tumbuh, patuh regulasi, dan siap bersaing di level global.
+          </p>
 
-            <ul className="flex flex-col gap-3.5 mb-10">
-              {tentangPoints.map((point) => (
-                <li key={point} className="flex items-center gap-3 text-gray-700" style={{ fontSize: '0.9rem' }}>
-                  <GradientCheck />
-                  {point}
-                </li>
-              ))}
-            </ul>
+          {/* Points */}
+          <ul className="flex flex-col gap-4 mb-10">
+            {tentangPoints.map((point, i) => (
+              <li key={point} className="flex items-center gap-4">
+                <span
+                  style={{
+                    fontFamily: 'Cormorant Garamond, serif',
+                    fontWeight: 300,
+                    fontSize: '1.1rem',
+                    color: '#1B4ED8',
+                    opacity: 0.5,
+                    minWidth: '28px',
+                  }}
+                >
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <span className="text-sm font-medium" style={{ color: '#374151' }}>{point}</span>
+              </li>
+            ))}
+          </ul>
 
+          <div className="flex items-center gap-4">
             <a
               href={WA_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 text-white font-bold px-7 py-3.5 rounded-xl text-sm transition-all hover:scale-[1.02] hover:opacity-90"
+              className="inline-flex items-center gap-2 font-semibold text-sm px-6 py-3.5 rounded-xl transition-all hover:scale-[1.02]"
               style={{
-                background: 'linear-gradient(135deg, #1B4ED8 0%, #3B82F6 100%)',
-                boxShadow: '0 8px 24px rgba(27,78,216,0.35)',
+                background: '#0D1117',
+                color: '#fff',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
               }}
             >
-              Hubungi Kami Sekarang
-              <ArrowRight size={16} />
+              Hubungi Kami
+              <ArrowUpRight size={15} />
             </a>
-          </motion.div>
+            <a
+              href={`tel:${PHONE_DISPLAY.replace(/\s|-/g, '')}`}
+              className="text-sm font-medium transition-colors hover:text-blue-600"
+              style={{ color: '#9CA3AF' }}
+            >
+              {PHONE_DISPLAY}
+            </a>
+          </div>
+        </motion.div>
 
-          {/* Right column */}
-          <motion.div
-            initial={{ opacity: 0, x: 36 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="relative"
+        {/* Right — full-bleed photo, no container */}
+        <motion.div
+          initial={{ opacity: 0, scale: 1.03 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          className="relative"
+          style={{ minHeight: '500px' }}
+        >
+          <Image
+            src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=85"
+            alt="Tim Polakerja Consulting"
+            fill
+            className="object-cover"
+          />
+
+          {/* Dark gradient bottom */}
+          <div
+            className="absolute inset-0"
+            style={{ background: 'linear-gradient(to top, rgba(8,14,24,0.75) 0%, transparent 50%)' }}
+          />
+
+          {/* Stats overlay at bottom */}
+          <div
+            className="absolute bottom-0 left-0 right-0 p-8 grid grid-cols-3 gap-4"
+            style={{ background: 'rgba(8,14,24,0.75)', backdropFilter: 'blur(12px)' }}
           >
-            {/* Decorative border offset */}
-            <div
-              className="absolute rounded-2xl"
-              style={{
-                top: '12px',
-                left: '12px',
-                right: '-12px',
-                bottom: '-12px',
-                background: 'linear-gradient(135deg, rgba(27,78,216,0.15) 0%, rgba(59,130,246,0.08) 100%)',
-                zIndex: 0,
-                borderRadius: '16px',
-              }}
-            />
-
-            {/* Photo */}
-            <div className="relative z-10 rounded-2xl overflow-hidden" style={{ aspectRatio: '4/3' }}>
-              <Image
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80"
-                alt="Tim Polakerja Consulting"
-                fill
-                className="object-cover"
-              />
-              {/* Subtle overlay */}
-              <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, transparent 60%, rgba(6,13,26,0.35) 100%)' }} />
-            </div>
-
-            {/* Experience badge — overlaps photo bottom-left */}
-            <div
-              className="absolute z-20 flex items-center gap-3 rounded-xl px-4 py-3"
-              style={{
-                bottom: '56px',
-                left: '-16px',
-                background: 'rgba(6,13,26,0.9)',
-                backdropFilter: 'blur(12px)',
-                border: '1px solid rgba(255,255,255,0.1)',
-                boxShadow: '0 12px 32px rgba(0,0,0,0.4)',
-              }}
-            >
-              <div
-                className="flex items-center justify-center rounded-lg shrink-0"
-                style={{ width: '40px', height: '40px', background: 'linear-gradient(135deg, #1B4ED8, #3B82F6)' }}
-              >
-                <ShieldCheck size={18} color="#fff" strokeWidth={1.8} />
+            {[
+              { value: '150+', label: 'Proyek Selesai' },
+              { value: '100+', label: 'Klien Puas' },
+              { value: '98%', label: 'Tingkat Sukses' },
+            ].map((s) => (
+              <div key={s.label} className="text-center">
+                <p
+                  style={{
+                    fontFamily: 'Cormorant Garamond, serif',
+                    fontWeight: 600,
+                    fontSize: '1.8rem',
+                    color: '#fff',
+                    lineHeight: 1,
+                  }}
+                >
+                  {s.value}
+                </p>
+                <p className="text-[10px] uppercase tracking-widest mt-1" style={{ color: 'rgba(255,255,255,0.45)' }}>
+                  {s.label}
+                </p>
               </div>
-              <div>
-                <p className="text-white font-bold" style={{ fontSize: '1.1rem', fontFamily: 'Syne, sans-serif', lineHeight: 1 }}>10+ Tahun</p>
-                <p className="text-xs" style={{ color: 'rgba(255,255,255,0.55)' }}>Pengalaman Profesional</p>
-              </div>
-            </div>
+            ))}
+          </div>
+        </motion.div>
 
-            {/* Card overlapping photo bottom */}
-            <div
-              className="relative z-10 bg-white rounded-2xl mx-6 -mt-12"
-              style={{
-                boxShadow: '0 12px 48px rgba(27,78,216,0.12), 0 2px 16px rgba(0,0,0,0.06)',
-                padding: '22px 24px 26px',
-              }}
-            >
-              <h3
-                className="font-bold text-gray-900 mb-5 leading-snug"
-                style={{ fontSize: '0.95rem', fontFamily: 'Syne, sans-serif' }}
-              >
-                Partner Anda untuk Kepatuhan<br />dan Pertumbuhan Berkelanjutan.
-              </h3>
-
-              <div className="grid grid-cols-3 gap-3">
-                {badges.map(({ icon: Icon, label }) => (
-                  <div key={label} className="flex flex-col items-center gap-2">
-                    <div
-                      className="w-11 h-11 rounded-xl flex items-center justify-center"
-                      style={{ background: '#EFF6FF', border: '1px solid #DBEAFE' }}
-                    >
-                      <Icon size={20} strokeWidth={1.5} style={{ color: '#1B4ED8' }} />
-                    </div>
-                    <span className="text-gray-600 text-xs font-semibold">{label}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-
-        </div>
       </div>
     </section>
   )
