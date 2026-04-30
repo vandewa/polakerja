@@ -13,11 +13,11 @@ export default function Hero() {
   return (
     <section
       id="beranda"
-      className="relative overflow-hidden"
+      className="relative"
       style={{ minHeight: '100svh' }}
     >
       {/* ── Background image ── */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <Image
           src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1600&q=80"
           alt="Gedung perkantoran"
