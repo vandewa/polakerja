@@ -128,7 +128,7 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0, x: 0 }}
         transition={{ duration: 0.7, delay: 0.42, ease: 'easeOut' }}
         className="hidden lg:block absolute z-20"
-        style={{ bottom: '9%', right: '8%' }}
+        style={{ bottom: '4%', right: '18%' }}
       >
         <div
           className="bg-white rounded-2xl border border-gray-100"
