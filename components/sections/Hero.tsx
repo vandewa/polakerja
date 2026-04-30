@@ -6,7 +6,7 @@ import { CheckCircle2, ShieldCheck } from 'lucide-react'
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 28 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] },
+  transition: { duration: 0.55, delay, ease: 'easeOut' as const },
 })
 
 export default function Hero() {
@@ -126,7 +126,7 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0, y: 24, x: 10 }}
         animate={{ opacity: 1, y: 0, x: 0 }}
-        transition={{ duration: 0.7, delay: 0.42, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.7, delay: 0.42, ease: 'easeOut' }}
         className="hidden lg:block absolute z-20"
         style={{ top: '42%', right: '6%', transform: 'translateY(-30%)' }}
       >
