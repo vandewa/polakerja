@@ -30,7 +30,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <a href="#beranda" className="flex items-center gap-2">
-            <Image src="/logo.svg" alt="Polakerja" width={140} height={36} priority />
+            <Image src="/logo-icon.png" alt="Polakerja" width={40} height={40} priority />
           </a>
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (

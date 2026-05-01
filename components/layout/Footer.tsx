@@ -12,7 +12,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-white/10">
           <div className="md:col-span-1">
-            <Image src="/logo.svg" alt="Polakerja" width={140} height={36} className="brightness-0 invert mb-4" />
+            <Image src="/logo-icon.png" alt="Polakerja" width={48} height={48} className="mb-4" />
             <p className="text-blue-200 text-sm leading-relaxed mb-6">
               Partner terpercaya untuk ISO, Legalitas & Perizinan, dan Sistem Manajemen bisnis Anda.
             </p>
