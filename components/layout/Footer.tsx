@@ -1,5 +1,5 @@
-import Image from 'next/image'
 import { Globe, Share2, Rss } from 'lucide-react'
+import Logo from '@/components/layout/Logo'
 
 const footerLinks = {
   Layanan: ['Sertifikasi ISO', 'Legalitas & Perizinan', 'SBU & SKK', 'Sistem Manajemen', 'Pendampingan'],
@@ -12,7 +12,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-white/10">
           <div className="md:col-span-1">
-            <Image src="/logo-icon.png" alt="Polakerja" width={48} height={48} className="mb-4" />
+            <div className="mb-4"><Logo variant="dark" /></div>
             <p className="text-blue-200 text-sm leading-relaxed mb-6">
               Partner terpercaya untuk ISO, Legalitas & Perizinan, dan Sistem Manajemen bisnis Anda.
             </p>

@@ -1,8 +1,8 @@
 'use client'
 import { useEffect, useState } from 'react'
-import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
 import { navLinks } from '@/lib/data'
+import Logo from '@/components/layout/Logo'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -30,7 +30,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <a href="#beranda" className="flex items-center gap-2">
-            <Image src="/logo-icon.png" alt="Polakerja" width={40} height={40} priority />
+            <Logo variant="light" />
           </a>
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
