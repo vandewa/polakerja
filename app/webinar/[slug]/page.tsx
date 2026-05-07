@@ -28,5 +28,45 @@ export default async function WebinarDetailPage({ params }: { params: Params }) 
   const webinar = getWebinarBySlug(slug)
   const Page = webinarPages[slug]
   if (!webinar || !Page) notFound()
-  return <Page webinar={webinar} />
+
+  const eventEnd = new Date(
+    new Date(webinar.startsAt).getTime() + webinar.durationMinutes * 60_000,
+  ).toISOString()
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name: webinar.title,
+    description: webinar.description,
+    startDate: webinar.startsAt,
+    endDate: eventEnd,
+    eventAttendanceMode:
+      webinar.format === 'offline'
+        ? 'https://schema.org/OfflineEventAttendanceMode'
+        : 'https://schema.org/OnlineEventAttendanceMode',
+    eventStatus: 'https://schema.org/EventScheduled',
+    location:
+      webinar.format === 'offline'
+        ? { '@type': 'Place', name: 'Lokasi tertera di tiket' }
+        : { '@type': 'VirtualLocation', url: webinar.mayarUrl },
+    performer: webinar.speakers.map((s) => ({ '@type': 'Person', name: s.name })),
+    offers: {
+      '@type': 'Offer',
+      url: webinar.mayarUrl,
+      price: webinar.earlyBirdPrice ?? webinar.price,
+      priceCurrency: 'IDR',
+      availability: 'https://schema.org/InStock',
+    },
+    image: webinar.thumbnail,
+  }
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <Page webinar={webinar} />
+    </>
+  )
 }
