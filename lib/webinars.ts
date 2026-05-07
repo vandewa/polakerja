@@ -48,6 +48,20 @@ export const webinars: Webinar[] = [
     ],
     category: 'iso',
   },
+  {
+    slug: 'sbu-konstruksi-feb2026',
+    title: 'Cara Cepat Dapat SBU Konstruksi 2026',
+    subtitle: 'Aturan baru, biaya, dan jalur tercepat',
+    description: 'Update terkini regulasi SBU Konstruksi 2026 dan strategi praktis mendapatkannya tanpa calo.',
+    thumbnail: '/webinar/thumbnails/sbu-konstruksi-feb2026.jpg',
+    startsAt: '2026-02-12T20:00:00+07:00',
+    durationMinutes: 75,
+    format: 'meet',
+    price: 75000,
+    mayarUrl: 'https://mayar.id/polakerja/sbu-konstruksi-feb2026',
+    speakers: [{ name: 'Damar Wisnu', role: 'Konsultan SBU/SKK', photo: '/webinar/speakers/damar.jpg' }],
+    category: 'sbu',
+  },
 ]
 
 export const getWebinarStatus = (w: Webinar, now: Date = new Date()): WebinarStatus => {
