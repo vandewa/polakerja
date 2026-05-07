@@ -22,10 +22,10 @@
 
 ## Architecture
 
-Single Next.js project (codebase ini), subdomain di-route via middleware Next.js.
+Single Next.js project (codebase ini), subdomain di-route via proxy Next.js.
 
 - **Stack:** Next.js 16 App Router, Tailwind 4, Framer Motion (sudah ada di repo).
-- **Subdomain serving:** middleware deteksi `host` header → rewrite ke prefix `/webinar/*`.
+- **Subdomain serving:** `proxy.ts` (Next.js 16 — rename dari `proxy.ts`) deteksi `host` header → rewrite ke prefix `/webinar/*`.
 - **Konten per webinar:** 1 file komponen di `components/webinar/pages/`, didaftarkan di registry yang di-dispatch oleh `app/webinar/[slug]/page.tsx`.
 - **Metadata terpusat:** `lib/webinars.ts` (judul, tanggal, harga, mayarUrl, dst).
 - **Subdomain config:** DNS CNAME `webinar` → Vercel; tambah domain di project Vercel.
@@ -33,7 +33,7 @@ Single Next.js project (codebase ini), subdomain di-route via middleware Next.js
 ## File Tree
 
 ```
-middleware.ts                              # rewrite subdomain → /webinar/*
+proxy.ts                              # rewrite subdomain → /webinar/*
 app/
   webinar/
     layout.tsx                             # Navbar webinar + Footer
@@ -102,7 +102,7 @@ export const getWebinarBySlug = (slug: string) => webinars.find(w => w.slug === 
 
 1. User akses `webinar.polakerja.com/iso-9001-jan2026`.
 2. Vercel rute ke Next.js function.
-3. `middleware.ts` baca `host` header → rewrite path ke `/webinar/iso-9001-jan2026`.
+3. `proxy.ts` baca `host` header → rewrite path ke `/webinar/iso-9001-jan2026`.
 4. `app/webinar/[slug]/page.tsx` (dispatcher) baca `lib/webinars.ts` untuk metadata + lookup `webinarPages[slug]` untuk komponen.
 5. Komponen page (misal `Iso9001Jan2026.tsx`) compose blocks + custom Tailwind, render full landing.
 6. User klik `<MayarPayButton href={webinar.mayarUrl}>` → redirect ke mayar.id.
@@ -152,14 +152,16 @@ export default async function WebinarPage({ params }) {
 }
 ```
 
-## Middleware
+## Proxy (Subdomain Routing)
+
+> **Next.js 16 rename:** `middleware.ts` → `proxy.ts`, `middleware()` → `proxy()`. Default runtime adalah Node.js. Codemod tersedia: `npx @next/codemod@canary middleware-to-proxy .`.
 
 ```ts
-// middleware.ts (root)
+// proxy.ts (root)
 const WEBINAR_HOST = 'webinar.polakerja.com'
 const WEBINAR_HOST_DEV = 'webinar.localhost:3000'
 
-export function middleware(req) {
+export function proxy(req) {
   const host = req.headers.get('host') ?? ''
   const isWebinarHost = host === WEBINAR_HOST || host === WEBINAR_HOST_DEV
   const url = req.nextUrl.clone()
@@ -207,7 +209,7 @@ Dev lokal: gunakan `http://webinar.localhost:3000` (atau edit hosts file).
 
 - **Unit:** helper `lib/webinars.ts` (`getWebinarStatus`, sort, filter).
 - **Manual smoke:** tiap webinar baru, cek di dev `webinar.localhost:3000/[slug]`, klik tombol Daftar pastikan redirect ke mayar URL benar, cek metadata OG.
-- **E2E (opsional):** Playwright untuk middleware rewrite + 404 path.
+- **E2E (opsional):** Playwright untuk proxy rewrite + 404 path.
 
 ## Subdomain Setup (Ops)
 
