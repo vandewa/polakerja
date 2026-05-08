@@ -3,6 +3,7 @@ export type WebinarStatus = 'upcoming' | 'live' | 'past'
 export type Speaker = {
   name: string
   role: string
+  /** Absolute external URL only (Cloudinary/Drive/placehold.co). Avoid local /public/ paths to keep storage cost zero. */
   photo: string
 }
 
@@ -11,6 +12,7 @@ export type Webinar = {
   title: string
   subtitle?: string
   description: string
+  /** Absolute external URL only (Cloudinary/Drive/picsum/placehold). 1200x630 recommended. */
   thumbnail: string
   startsAt: string
   durationMinutes: number
@@ -31,7 +33,7 @@ export const webinars: Webinar[] = [
     subtitle: 'Dari nol sampai siap audit sertifikasi',
     description:
       'Panduan praktis menyiapkan ISO 9001 untuk UMKM tanpa konsultan mahal. Cocok untuk pemilik bisnis yang ingin tender pemerintah atau ekspor.',
-    thumbnail: '/webinar/thumbnails/iso-9001-jan2026.jpg',
+    thumbnail: 'https://picsum.photos/seed/iso-9001-jan2026/1200/630',
     startsAt: '2026-01-15T19:00:00+07:00',
     durationMinutes: 90,
     format: 'zoom',
@@ -43,7 +45,7 @@ export const webinars: Webinar[] = [
       {
         name: 'Damar Wisnu',
         role: 'Lead Auditor ISO 9001',
-        photo: '/webinar/speakers/damar.jpg',
+        photo: 'https://placehold.co/400x400/0F172A/FFFFFF?text=DW',
       },
     ],
     category: 'iso',
@@ -53,13 +55,13 @@ export const webinars: Webinar[] = [
     title: 'Cara Cepat Dapat SBU Konstruksi 2026',
     subtitle: 'Aturan baru, biaya, dan jalur tercepat',
     description: 'Update terkini regulasi SBU Konstruksi 2026 dan strategi praktis mendapatkannya tanpa calo.',
-    thumbnail: '/webinar/thumbnails/sbu-konstruksi-feb2026.jpg',
+    thumbnail: 'https://picsum.photos/seed/sbu-konstruksi-feb2026/1200/630',
     startsAt: '2026-02-12T20:00:00+07:00',
     durationMinutes: 75,
     format: 'meet',
     price: 75000,
     mayarUrl: 'https://mayar.id/polakerja/sbu-konstruksi-feb2026',
-    speakers: [{ name: 'Damar Wisnu', role: 'Konsultan SBU/SKK', photo: '/webinar/speakers/damar.jpg' }],
+    speakers: [{ name: 'Damar Wisnu', role: 'Konsultan SBU/SKK', photo: 'https://placehold.co/400x400/0F172A/FFFFFF?text=DW' }],
     category: 'sbu',
   },
 ]
