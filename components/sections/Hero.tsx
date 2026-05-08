@@ -59,7 +59,7 @@ export default function Hero() {
             className="font-semibold text-sm uppercase tracking-widest mb-5"
             style={{ color: '#1B4ED8' }}
           >
-            Konsultan ISO, Legalitas dan Perizinan
+            Konsultan ISO, Legalitas, dan Perizinan
           </motion.p>
 
           <motion.h1

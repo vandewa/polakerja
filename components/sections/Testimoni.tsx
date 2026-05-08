@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { Star } from 'lucide-react'
 import { testimoniData } from '@/lib/data'
 
 export default function Testimoni() {
@@ -26,13 +27,20 @@ export default function Testimoni() {
               onClick={() => setActive(i)}
               className={`bg-white rounded-2xl p-8 shadow-sm border-2 cursor-pointer transition-all ${active === i ? 'border-[#1B4ED8] shadow-blue-100 shadow-lg' : 'border-transparent hover:border-blue-100'}`}
             >
-              {/* Large typographic opening quote mark */}
-              <div
-                className="font-serif font-bold leading-none mb-4 select-none"
-                style={{ fontSize: '3.5rem', color: '#1B4ED8', lineHeight: 1 }}
-                aria-hidden="true"
-              >
-                &ldquo;
+              <div className="flex items-start justify-between mb-4">
+                {/* Large typographic opening quote mark */}
+                <div
+                  className="font-serif font-bold leading-none select-none"
+                  style={{ fontSize: '3.5rem', color: '#1B4ED8', lineHeight: 1 }}
+                  aria-hidden="true"
+                >
+                  &ldquo;
+                </div>
+                <div className="flex gap-0.5 mt-2">
+                  {Array.from({ length: item.rating }).map((_, j) => (
+                    <Star key={j} size={14} fill="#FACC15" stroke="#FACC15" />
+                  ))}
+                </div>
               </div>
 
               <p className="text-gray-600 text-sm leading-relaxed mb-6">

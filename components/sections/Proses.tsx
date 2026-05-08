@@ -16,7 +16,11 @@ export default function Proses() {
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">Pendekatan Sistematis, Hasil Optimal</h2>
         </div>
         <div className="relative">
-          <div className="hidden lg:block absolute top-10 left-[10%] right-[10%] h-0.5 bg-blue-100 z-0" />
+          {/* Dashed connecting line — sits behind the circles, horizontally centered with them */}
+          <div
+            className="hidden lg:block absolute left-[10%] right-[10%] z-0 border-t-2 border-dashed border-gray-300"
+            style={{ top: '40px' }}
+          />
           <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-8 relative z-10">
             {prosesData.map((item, i) => {
               const Icon = iconMap[item.icon]
@@ -27,16 +31,21 @@ export default function Proses() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.12 }}
-                  className="flex flex-col items-center text-center gap-4"
+                  className="flex flex-col items-center text-center"
                 >
-                  <div className="w-20 h-20 bg-white border-2 border-blue-100 rounded-full flex items-center justify-center shadow-md">
-                    <Icon size={28} className="text-[#1B4ED8]" />
+                  <div
+                    className="w-20 h-20 rounded-full flex items-center justify-center"
+                    style={{ background: '#EFF6FF' }}
+                  >
+                    <Icon size={28} className="text-[#1B4ED8]" strokeWidth={1.8} />
                   </div>
-                  <div>
-                    <p className="text-xs font-bold text-[#1B4ED8] uppercase tracking-widest mb-1">Langkah {item.step}</p>
-                    <h3 className="font-bold text-gray-900 text-base mb-2">{item.title}</h3>
-                    <p className="text-gray-500 text-sm leading-relaxed">{item.description}</p>
-                  </div>
+                  <p className="mt-5 text-sm font-medium text-gray-400">
+                    {String(item.step).padStart(2, '0')}
+                  </p>
+                  <h3 className="font-bold text-gray-900 text-base mt-2 mb-2">{item.title}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed max-w-[220px]">
+                    {item.description}
+                  </p>
                 </motion.div>
               )
             })}

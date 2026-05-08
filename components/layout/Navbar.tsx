@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
 import { Menu, X } from 'lucide-react'
-import { navLinks } from '@/lib/data'
+import { navLinks, whatsappConsultUrl } from '@/lib/data'
 import Logo from '@/components/layout/Logo'
 
 export default function Navbar() {
@@ -48,7 +48,9 @@ export default function Navbar() {
           </nav>
           <div className="hidden md:block">
             <a
-              href="#kontak"
+              href={whatsappConsultUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-white text-sm font-semibold px-5 py-2.5 rounded-md transition-all"
               style={{ background: 'linear-gradient(135deg, #1B4ED8 0%, #3B82F6 100%)' }}
             >
@@ -71,7 +73,9 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#kontak"
+            href={whatsappConsultUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-white text-sm font-semibold px-5 py-2.5 rounded-md text-center"
             style={{ background: 'linear-gradient(135deg, #1B4ED8 0%, #3B82F6 100%)' }}
           >
