@@ -1,7 +1,9 @@
+import type { Metadata } from 'next'
 import WebinarNavbar from '@/components/webinar/WebinarNavbar'
 import Footer from '@/components/layout/Footer'
 
-export const metadata = {
+export const metadata: Metadata = {
+  metadataBase: new URL('https://webinar.polakerja.com'),
   title: { default: 'Webinar Polakerja', template: '%s — Webinar Polakerja' },
   description: 'Webinar legalitas, sertifikasi, dan sistem manajemen dari Polakerja.',
 }
