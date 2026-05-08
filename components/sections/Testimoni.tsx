@@ -8,15 +8,15 @@ export default function Testimoni() {
   const [active, setActive] = useState(0)
 
   return (
-    <section id="testimoni" className="py-24 bg-gray-50">
+    <section id="testimoni" className="py-16 sm:py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <p className="text-[#1B4ED8] font-semibold text-sm uppercase tracking-widest mb-3">Testimoni Klien</p>
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-3">Kepercayaan Mereka, Prioritas Kami</h2>
+        <div className="text-center mb-10 sm:mb-16">
+          <p className="text-[#1B4ED8] font-semibold text-xs sm:text-sm uppercase tracking-widest mb-3">Testimoni Klien</p>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3">Kepercayaan Mereka, Prioritas Kami</h2>
           <div className="w-16 h-1 bg-[#1B4ED8] mx-auto rounded-full" />
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 mb-10">
+        <div className="grid md:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-10">
           {testimoniData.map((item, i) => (
             <motion.div
               key={i}
@@ -25,7 +25,7 @@ export default function Testimoni() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               onClick={() => setActive(i)}
-              className={`bg-white rounded-2xl p-8 shadow-sm border-2 cursor-pointer transition-all ${active === i ? 'border-[#1B4ED8] shadow-blue-100 shadow-lg' : 'border-transparent hover:border-blue-100'}`}
+              className={`bg-white rounded-2xl p-6 sm:p-8 shadow-sm border-2 cursor-pointer transition-all ${active === i ? 'border-[#1B4ED8] shadow-blue-100 shadow-lg' : 'border-transparent hover:border-blue-100'}`}
             >
               <div className="flex items-start justify-between mb-4">
                 {/* Large typographic opening quote mark */}

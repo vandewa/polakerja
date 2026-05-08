@@ -26,7 +26,7 @@ export default function CTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative max-w-7xl mx-auto px-5 sm:px-8 py-7 sm:py-8 grid md:grid-cols-[auto_1fr_auto] items-center gap-5"
+          className="relative max-w-7xl mx-auto px-5 sm:px-8 py-6 sm:py-8 grid md:grid-cols-[auto_1fr_auto] items-center gap-4 sm:gap-5"
         >
           {/* Icon badge */}
           <div

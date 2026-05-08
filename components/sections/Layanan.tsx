@@ -32,14 +32,14 @@ export default function Layanan() {
   }, [openId])
 
   return (
-    <section id="layanan" className="py-24 bg-white">
+    <section id="layanan" className="py-16 sm:py-24 bg-white scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <p className="text-[#1B4ED8] font-semibold text-sm uppercase tracking-widest mb-3">Layanan Kami</p>
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Solusi Lengkap untuk Kebutuhan Bisnis Anda</h2>
+        <div className="text-center mb-10 sm:mb-16">
+          <p className="text-[#1B4ED8] font-semibold text-xs sm:text-sm uppercase tracking-widest mb-3">Layanan Kami</p>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Solusi Lengkap untuk Kebutuhan Bisnis Anda</h2>
           <div className="w-12 h-1 bg-[#1B4ED8] mx-auto rounded-full" />
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-6">
           {layananData.map((item, i) => {
             const Icon = iconMap[item.icon]
             return (
@@ -50,21 +50,22 @@ export default function Layanan() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 whileHover={{ y: -4 }}
-                className="bg-white border border-gray-100 rounded-xl p-6 flex flex-col gap-4 shadow-sm hover:shadow-lg hover:shadow-blue-100/50 transition-shadow"
+                className="bg-white border border-gray-100 rounded-xl p-4 sm:p-6 flex flex-col gap-3 sm:gap-4 shadow-sm hover:shadow-lg hover:shadow-blue-100/50 transition-shadow"
               >
-                <div className="w-16 h-16 bg-[#1B4ED8] rounded-full flex items-center justify-center shadow-md shadow-blue-200">
-                  <Icon size={26} className="text-white" strokeWidth={1.5} />
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#1B4ED8] rounded-full flex items-center justify-center shadow-md shadow-blue-200">
+                  <Icon size={22} className="text-white sm:hidden" strokeWidth={1.5} />
+                  <Icon size={26} className="text-white hidden sm:block" strokeWidth={1.5} />
                 </div>
-                <h3 className="font-bold text-gray-900 text-base">{item.title}</h3>
-                <ul className="flex flex-col gap-1.5">
+                <h3 className="font-bold text-gray-900 text-sm sm:text-base">{item.title}</h3>
+                <ul className="flex flex-col gap-1 sm:gap-1.5">
                   {item.items.map((sub) => (
-                    <li key={sub} className="text-gray-500 text-sm">{sub}</li>
+                    <li key={sub} className="text-gray-500 text-xs sm:text-sm">{sub}</li>
                   ))}
                 </ul>
                 <button
                   type="button"
                   onClick={() => setOpenId(item.id)}
-                  className="text-[#1B4ED8] text-sm font-semibold mt-auto text-left hover:underline"
+                  className="text-[#1B4ED8] text-xs sm:text-sm font-semibold mt-auto text-left hover:underline"
                 >
                   Selengkapnya →
                 </button>
@@ -103,7 +104,7 @@ export default function Layanan() {
             >
               {/* Header band */}
               <div
-                className="relative px-6 sm:px-8 py-7 text-white"
+                className="relative px-5 sm:px-8 py-5 sm:py-7 text-white"
                 style={{ background: 'linear-gradient(135deg, #1B4ED8 0%, #1E40AF 100%)' }}
               >
                 <button
@@ -134,7 +135,7 @@ export default function Layanan() {
               </div>
 
               {/* Body */}
-              <div className="px-6 sm:px-8 py-6 sm:py-7">
+              <div className="px-5 sm:px-8 py-5 sm:py-7">
                 <p className="text-gray-600 leading-relaxed text-sm sm:text-[15px] mb-6">{open.description}</p>
 
                 {/* Benefits */}
@@ -170,7 +171,7 @@ export default function Layanan() {
               </div>
 
               {/* Footer CTA */}
-              <div className="px-6 sm:px-8 pb-6 sm:pb-7 pt-1 flex flex-col sm:flex-row sm:items-center gap-3 sm:justify-between">
+              <div className="px-5 sm:px-8 pb-5 sm:pb-7 pt-1 flex flex-col sm:flex-row sm:items-center gap-3 sm:justify-between">
                 <p className="text-xs text-gray-500">Butuh konsultasi langsung? Tim kami siap membantu.</p>
                 <a
                   href={whatsappConsultUrl}

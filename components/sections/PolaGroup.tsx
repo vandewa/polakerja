@@ -25,7 +25,7 @@ const ArrowUpRight = ({ size = 18 }: { size?: number }) => (
 export default function PolaGroup() {
   return (
     <section
-      className="py-20 lg:py-24"
+      className="py-16 sm:py-20 lg:py-24"
       style={{
         background:
           'linear-gradient(180deg, #FFFFFF 0%, #EFF6FF 50%, #FFFFFF 100%)',
@@ -38,7 +38,7 @@ export default function PolaGroup() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-10 sm:mb-12"
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-gray-200 shadow-sm mb-5">
             <div
@@ -58,7 +58,7 @@ export default function PolaGroup() {
             </span>
           </div>
 
-          <h2 className="text-3xl lg:text-4xl font-extrabold text-gray-900 mb-3 leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900 mb-3 leading-tight">
             Solusi Terintegrasi untuk Bisnis Anda
           </h2>
           <p className="text-gray-500 max-w-2xl mx-auto leading-relaxed text-sm lg:text-base">
@@ -69,14 +69,14 @@ export default function PolaGroup() {
         </motion.div>
 
         {/* ── Two cards ── */}
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
           {/* Polakerja — current site */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative rounded-2xl p-8 bg-white"
+            className="relative rounded-2xl p-6 sm:p-8 bg-white"
             style={{
               border: '2px solid #1B4ED8',
               boxShadow: '0 18px 40px rgba(27,78,216,0.12)',
@@ -136,7 +136,7 @@ export default function PolaGroup() {
             href={POLAPAJAK_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative rounded-2xl p-8 text-white overflow-hidden transition-all duration-300 hover:scale-[1.015] hover:shadow-[0_28px_60px_rgba(22,163,74,0.45)]"
+            className="group relative rounded-2xl p-6 sm:p-8 text-white overflow-hidden transition-all duration-300 hover:scale-[1.015] hover:shadow-[0_28px_60px_rgba(22,163,74,0.45)]"
             style={{
               background: 'linear-gradient(135deg, #16A34A 0%, #15803D 60%, #14532D 100%)',
               boxShadow: '0 20px 45px rgba(22,163,74,0.32)',

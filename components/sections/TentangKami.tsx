@@ -27,9 +27,9 @@ const GradientCheck = () => (
 
 export default function TentangKami() {
   return (
-    <section id="tentang" className="py-24 bg-white">
+    <section id="tentang" className="py-16 sm:py-24 bg-white scroll-mt-20">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-5 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-5 items-center">
 
           {/* ── Left column — text & CTA ── */}
           <motion.div
@@ -89,9 +89,8 @@ export default function TentangKami() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-5 relative rounded-2xl overflow-hidden"
+            className="lg:col-span-5 relative rounded-2xl overflow-hidden h-[280px] sm:h-[340px] lg:h-auto lg:min-h-[380px]"
             style={{
-              minHeight: 380,
               boxShadow: '0 18px 40px rgba(15,23,42,0.12)',
               border: '1px solid #E2E8F0',
             }}
@@ -112,10 +111,8 @@ export default function TentangKami() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-3 relative rounded-2xl text-white overflow-hidden"
+            className="lg:col-span-3 relative rounded-2xl text-white overflow-hidden p-6 sm:p-7 lg:min-h-[380px]"
             style={{
-              minHeight: 380,
-              padding: '1.75rem 1.5rem',
               background: 'linear-gradient(135deg, #1B4ED8 0%, #1E40AF 100%)',
               boxShadow: '0 18px 40px rgba(27,78,216,0.25)',
             }}
