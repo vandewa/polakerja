@@ -64,6 +64,7 @@ export const webinars: Webinar[] = [
     speakers: [{ name: 'Damar Wisnu', role: 'Konsultan SBU/SKK', photo: 'https://placehold.co/400x400/0F172A/FFFFFF?text=DW' }],
     category: 'sbu',
   },
+  // CLI:entries-end
 ]
 
 export const getWebinarStatus = (w: Webinar, now: Date = new Date()): WebinarStatus => {
