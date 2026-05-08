@@ -90,3 +90,21 @@ export const getPastWebinars = (now: Date = new Date()): Webinar[] =>
 
 export const getWebinarBySlug = (slug: string): Webinar | undefined =>
   webinars.find((w) => w.slug === slug)
+
+const isLocalAssetPath = (value: string): boolean =>
+  value.startsWith('/') && !value.startsWith('//')
+
+const warnIfLocalAsset = (slug: string, field: string, value: string): void => {
+  if (process.env.NODE_ENV !== 'production' && isLocalAssetPath(value)) {
+    console.warn(
+      `[webinars] ${slug}: ${field} uses local path "${value}". Prefer external URL (Cloudinary/Drive/placehold) — keeps storage cost zero.`,
+    )
+  }
+}
+
+for (const w of webinars) {
+  warnIfLocalAsset(w.slug, 'thumbnail', w.thumbnail)
+  for (const [i, s] of w.speakers.entries()) {
+    warnIfLocalAsset(w.slug, `speakers[${i}].photo`, s.photo)
+  }
+}
