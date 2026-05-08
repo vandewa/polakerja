@@ -26,9 +26,17 @@ export default function Hero() {
           className="object-cover object-right-top"
           priority
         />
-        {/* White fade — strong on left, fades out at ~60% */}
+        {/* Mobile fade — vertical: building visible at top, fades to white at content */}
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 lg:hidden"
+          style={{
+            background:
+              'linear-gradient(to bottom, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.92) 38%, rgba(255,255,255,0.97) 70%)',
+          }}
+        />
+        {/* Desktop fade — horizontal: strong on left where text is, fades to right */}
+        <div
+          className="absolute inset-0 hidden lg:block"
           style={{
             background:
               'linear-gradient(to right, #ffffff 0%, #ffffffee 38%, #ffffffaa 55%, #ffffff44 70%, transparent 100%)',
@@ -79,7 +87,7 @@ export default function Hero() {
 
           <motion.div
             {...fadeUp(0.26)}
-            className="grid grid-cols-2 gap-x-6 gap-y-3 mb-8"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5 mb-8"
             style={{ maxWidth: '420px' }}
           >
             {['Berpengalaman & Professional', 'Pendekatan Praktis & Efisien', '100% Komitmen Klien'].map(
