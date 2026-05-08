@@ -1,7 +1,10 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { Trophy, Users, ShieldCheck, Clock } from 'lucide-react'
 import { statsData } from '@/lib/data'
+
+const statIcons = [Trophy, Users, ShieldCheck, Clock]
 
 function Counter({ value, suffix }: { value: number; suffix: string }) {
   const [count, setCount] = useState(0)
@@ -29,23 +32,43 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 
 export default function Stats() {
   return (
-    <section className="py-20" style={{ backgroundColor: '#1E3A5F' }}>
+    <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-10">
-          {statsData.map((item, i) => (
-            <motion.div
-              key={item.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="flex flex-col gap-2"
-            >
-              <Counter value={item.value} suffix={item.suffix} />
-              <p className="text-blue-200 font-semibold text-base">{item.label}</p>
-              <p className="text-blue-300/70 text-sm leading-relaxed">{item.description}</p>
-            </motion.div>
-          ))}
+        <div
+          className="rounded-3xl relative overflow-hidden"
+          style={{
+            background:
+              'linear-gradient(135deg, #1B4ED8 0%, #1E40AF 50%, #1B4ED8 100%)',
+            boxShadow:
+              '0 30px 80px -20px rgba(27,78,216,0.45), 0 10px 40px rgba(27,78,216,0.22)',
+          }}
+        >
+          <div className="grid grid-cols-2 lg:grid-cols-4 px-6 sm:px-8 py-12 lg:py-14 gap-y-10">
+            {statsData.map((item, i) => {
+              const Icon = statIcons[i]
+              return (
+                <motion.div
+                  key={item.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className={`flex flex-col items-center text-center px-4 lg:px-6 ${
+                    i > 0 ? 'lg:border-l-2 lg:border-white/40' : ''
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <Icon size={30} className="text-white/85" strokeWidth={1.8} />
+                    <Counter value={item.value} suffix={item.suffix} />
+                  </div>
+                  <p className="text-white font-semibold text-base mt-2 mb-2">{item.label}</p>
+                  <p className="text-blue-100/80 text-sm leading-relaxed max-w-[240px]">
+                    {item.description}
+                  </p>
+                </motion.div>
+              )
+            })}
+          </div>
         </div>
       </div>
     </section>
