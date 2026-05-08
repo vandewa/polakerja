@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { UserCheck, ShieldCheck, Leaf } from 'lucide-react'
-import { tentangPoints } from '@/lib/data'
+import { tentangPoints, whatsappConsultUrl } from '@/lib/data'
 
 const GradientCheck = () => (
   <span
@@ -66,7 +66,9 @@ export default function TentangKami() {
             </ul>
 
             <a
-              href="#kontak"
+              href={whatsappConsultUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-white font-semibold px-7 py-3 rounded-md text-sm transition-opacity hover:opacity-90"
               style={{ background: 'linear-gradient(135deg, #1B4ED8 0%, #3B82F6 100%)' }}
             >

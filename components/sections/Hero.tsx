@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { CheckCircle2, ShieldCheck } from 'lucide-react'
+import { whatsappConsultUrl } from '@/lib/data'
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 28 },
@@ -14,7 +15,7 @@ export default function Hero() {
     <section
       id="beranda"
       className="relative"
-      style={{ minHeight: '100svh' }}
+      style={{ minHeight: '82svh' }}
     >
       {/* ── Background image ── */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -58,7 +59,7 @@ export default function Hero() {
             className="font-semibold text-sm uppercase tracking-widest mb-5"
             style={{ color: '#1B4ED8' }}
           >
-            Konsultan ISO &amp; Legalitas Terpercaya
+            Konsultan ISO, Legalitas dan Perizinan
           </motion.p>
 
           <motion.h1
@@ -108,7 +109,9 @@ export default function Hero() {
 
           <motion.div {...fadeUp(0.34)} className="flex flex-wrap gap-4">
             <a
-              href="#kontak"
+              href={whatsappConsultUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-semibold px-7 py-3 rounded-md transition-all"
               style={{
                 background: 'linear-gradient(135deg, #1B4ED8 0%, #3B82F6 100%)',
@@ -129,16 +132,18 @@ export default function Hero() {
       </div>
 
       {/* ── Floating card ── absolutely positioned in the right half ──
-          top-[42%] places the card top at 42% of the section height,
-          which visually lands at the paragraph/badge area on the left.
-          right-[6%] keeps it away from the edge.
+          Wrapper anchors the card vertically centered around 50% of the
+          section height, aligning it with the heading/paragraph area on
+          the left. right-[6%] keeps it nicely inset from the edge.
       */}
+      <div
+        className="hidden lg:block absolute z-20"
+        style={{ top: '50%', right: '18%', transform: 'translateY(-50%)' }}
+      >
       <motion.div
         initial={{ opacity: 0, y: 24, x: 10 }}
         animate={{ opacity: 1, y: 0, x: 0 }}
         transition={{ duration: 0.7, delay: 0.42, ease: 'easeOut' }}
-        className="hidden lg:block absolute z-20"
-        style={{ bottom: '-3%', right: '30%' }}
       >
         <div
           className="bg-white rounded-2xl border border-gray-100"
@@ -174,6 +179,7 @@ export default function Hero() {
           </div>
         </div>
       </motion.div>
+      </div>
     </section>
   )
 }

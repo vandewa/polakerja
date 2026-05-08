@@ -2,9 +2,12 @@ export const navLinks = [
   { label: 'Beranda', href: '#beranda' },
   { label: 'Layanan', href: '#layanan' },
   { label: 'Tentang Kami', href: '#tentang' },
-  { label: 'Blog', href: '#blog' },
   { label: 'Kontak', href: '#kontak' },
 ]
+
+export const whatsappConsultUrl =
+  'https://wa.me/6281513050035?text=' +
+  encodeURIComponent('halo Polakerja Consulting, saya ingin konsultasi ISO/Legalitas/Perizinan')
 
 export const layananData = [
   {
@@ -42,7 +45,7 @@ export const layananData = [
 export const statsData = [
   { value: 150, suffix: '+', label: 'Proyek Selesai', description: 'Berbagai industri telah mempercayakan proyek dan legalitasnya.' },
   { value: 100, suffix: '+', label: 'Klien Puas', description: 'Kepuasan klien selalu kami prioritaskan di setiap langkah.' },
-  { value: 98, suffix: '%', label: 'Tingkat Keberhasilan', description: 'Proses sertifikasi & perizinan berhasil hingga tahap akhir.' },
+  { value: 100, suffix: '%', label: 'Tingkat Keberhasilan', description: 'Proses sertifikasi & perizinan berhasil hingga tahap akhir.' },
   { value: 10, suffix: '+', label: 'Tahun Pengalaman', description: 'Tim kami berpengalaman melayani klien dari berbagai sektor.' },
 ]
 

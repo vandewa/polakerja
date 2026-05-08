@@ -1,5 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
+import { whatsappConsultUrl } from '@/lib/data'
 
 export default function CTA() {
   return (
@@ -21,7 +22,9 @@ export default function CTA() {
             </p>
           </div>
           <a
-            href="#kontak"
+            href={whatsappConsultUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="shrink-0 bg-white text-[#1B4ED8] font-bold px-8 py-4 rounded-md hover:bg-blue-50 transition-colors text-base whitespace-nowrap"
           >
             Konsultasi Gratis Sekarang →
