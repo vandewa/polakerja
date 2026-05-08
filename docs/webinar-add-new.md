@@ -1,5 +1,50 @@
 # Cara Menambah Webinar Baru
 
+## Quick Start (CLI Generator)
+
+```bash
+npm run webinar:new -- --slug=leadership-mar2026 --title="Leadership untuk Manager Baru" --template=dark-premium --format=zoom
+```
+
+Atau interactive:
+
+```bash
+npm run webinar:new
+```
+
+CLI akan:
+1. Validasi slug (kebab-case, tidak duplikat).
+2. Copy starter template ke `components/webinar/pages/[ComponentName].tsx`.
+3. Auto-register di `components/webinar/pages/registry.ts`.
+4. Insert entry placeholder di `lib/webinars.ts`.
+
+Setelah CLI selesai, edit:
+- `lib/webinars.ts` → ganti TODO placeholders dengan data asli.
+- `components/webinar/pages/[ComponentName].tsx` → customize sesuai brief klien.
+
+## Starter Templates
+
+3 starter template ready-to-customize di `components/webinar/pages/templates/`:
+
+| Template | Mood | Block utama |
+|---|---|---|
+| `dark-premium` | Gelap, elegan, premium | Hero image full bleed, Pitch, LearningOutcomes grid, AgendaTimeline, SpeakerCard, InvestmentBlock, FAQ |
+| `light-professional` | Cerah, korporat, bersih | Hero teks, AudienceTarget, AgendaTimeline, SpeakerCard, BonusList, InvestmentBlock |
+| `bold-gradient` | Berani, gradient, modern | Hero gradient, LearningOutcomes list, SpeakerCard, TestimonialQuotes, InvestmentBlock, FAQ |
+
+## Aset (URL Eksternal Wajib)
+
+**JANGAN simpan aset di `public/webinar/`**. Semua field aset (`thumbnail`, `speakers[].photo`, dll) wajib URL eksternal:
+
+- Cloudinary akun klien: `https://res.cloudinary.com/[client]/...`
+- Google Drive public link: `https://drive.google.com/uc?id=...`
+- YouTube/Vimeo embed (untuk video)
+- Placeholder demo: `https://picsum.photos/seed/[slug]/1200/630`
+
+`next.config.ts` sudah whitelist domain di atas via `remotePatterns`.
+
+Lihat `docs/webinar-intake.md` untuk workflow intake klien lengkap.
+
 ## Langkah ringkas
 
 1. **Mayar.id**
