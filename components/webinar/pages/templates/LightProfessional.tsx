@@ -14,6 +14,7 @@ export default function __TEMPLATE_NAME__({ webinar }: WebinarPageProps) {
         title={webinar.title}
         subtitle={webinar.subtitle}
         startsAt={webinar.startsAt}
+        durationMinutes={webinar.durationMinutes}
         format={webinar.format}
         mayarUrl={webinar.mayarUrl}
       />
@@ -51,12 +52,7 @@ export default function __TEMPLATE_NAME__({ webinar }: WebinarPageProps) {
       </section>
 
       <section className="mx-auto max-w-4xl px-6 py-20">
-        <h2 className="mb-12 text-center text-4xl font-bold">Pembicara</h2>
-        <div className="grid gap-8 md:grid-cols-2">
-          {webinar.speakers.map((s) => (
-            <SpeakerCard key={s.name} name={s.name} role={s.role} photo={s.photo} />
-          ))}
-        </div>
+        <SpeakerCard speakers={webinar.speakers} />
       </section>
 
       <section className="mx-auto max-w-4xl px-6 py-20">
