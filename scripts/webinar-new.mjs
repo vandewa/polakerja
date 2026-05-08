@@ -132,10 +132,78 @@ async function main() {
       process.exit(1)
     }
 
-    // Step 3: Apply changes (delegated to next task — Task 9)
-    // ...
+    // Step 3: Apply changes
+    const mutations = []
 
-    console.log('TODO Task 9: implement file mutations')
+    try {
+      // 3a. Copy template → components/webinar/pages/[ComponentName].tsx
+      const templateSource = readFileSync(templatePath, 'utf8')
+      const componentSource = templateSource
+        .replaceAll('__TEMPLATE_NAME__', componentName)
+        .replaceAll("from '../registry'", "from './registry'")
+      writeFileSync(componentPath, componentSource, 'utf8')
+      mutations.push({ type: 'create', path: componentPath })
+
+      // 3b. Insert into registry.ts
+      const importLine = `import ${componentName} from './${componentName}'\n`
+      const entryLine = `  '${slug}': ${componentName},\n`
+      const newRegistry = registrySource
+        .replace('// CLI:imports-end', `${importLine}// CLI:imports-end`)
+        .replace('// CLI:entries-end', `${entryLine}  // CLI:entries-end`)
+      writeFileSync(registryPath, newRegistry, 'utf8')
+      mutations.push({ type: 'modify', path: registryPath, before: registrySource })
+
+      // 3c. Insert into lib/webinars.ts
+      const newEntry = `  {
+    slug: '${slug}',
+    title: '${title.replaceAll("'", "\\'")}',
+    description: 'TODO: tulis deskripsi 1-2 kalimat untuk OG/SEO.',
+    thumbnail: 'https://picsum.photos/seed/${slug}/1200/630',
+    startsAt: '2099-01-01T19:00:00+07:00', // TODO: ganti dengan tanggal asli (ISO 8601 + offset WIB)
+    durationMinutes: 90,
+    format: '${format}',
+    price: 0,
+    mayarUrl: 'https://mayar.id/polakerja/${slug}',
+    speakers: [
+      { name: 'TODO Nama', role: 'TODO Role', photo: 'https://placehold.co/400x400/0F172A/FFFFFF?text=??' },
+    ],
+    category: 'umum',
+  },
+`
+      const newWebinars = webinarsSource.replace('// CLI:entries-end', `${newEntry}  // CLI:entries-end`)
+      writeFileSync(webinarsPath, newWebinars, 'utf8')
+      mutations.push({ type: 'modify', path: webinarsPath, before: webinarsSource })
+
+      // Step 4: Success message
+      console.log(`✓ Created ${componentPath}`)
+      console.log(`✓ Registered ${componentName} in registry.ts`)
+      console.log(`✓ Added entry "${slug}" to lib/webinars.ts`)
+      console.log('')
+      console.log('Next steps:')
+      console.log(`  1. Edit lib/webinars.ts → ganti TODO dengan data asli (tanggal, harga, mayarUrl, speaker, dll)`)
+      console.log(`  2. Customize components/webinar/pages/${componentName}.tsx sesuai desain klien`)
+      console.log(`  3. Pastikan semua URL aset eksternal (Cloudinary/Drive klien)`)
+      console.log(`  4. Run: npm run dev → preview di webinar.localhost:3000/${slug}`)
+    } catch (err) {
+      // Rollback on failure
+      console.error('✗ Mutation failed:', err.message)
+      console.error('Rolling back...')
+      for (const m of mutations.reverse()) {
+        try {
+          if (m.type === 'create' && existsSync(m.path)) {
+            const { unlinkSync } = await import('node:fs')
+            unlinkSync(m.path)
+            console.error(`  ↺ deleted ${m.path}`)
+          } else if (m.type === 'modify' && m.before !== undefined) {
+            writeFileSync(m.path, m.before, 'utf8')
+            console.error(`  ↺ reverted ${m.path}`)
+          }
+        } catch (rollbackErr) {
+          console.error(`  ✗ rollback failed for ${m.path}:`, rollbackErr.message)
+        }
+      }
+      process.exit(1)
+    }
   } finally {
     rl.close()
   }
