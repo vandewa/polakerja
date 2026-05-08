@@ -38,7 +38,7 @@ export default function Logo({ variant = 'light' }: LogoProps) {
             lineHeight: 1.2,
           }}
         >
-          polakerja
+          Polakerja
           <span style={{ color: isLight ? '#1B4ED8' : '#93C5FD' }}>.id</span>
         </span>
         <span
