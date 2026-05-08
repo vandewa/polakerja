@@ -9,11 +9,11 @@ const iconMap: Record<string, React.ElementType> = {
 
 export default function Proses() {
   return (
-    <section id="proses" className="py-24 bg-gray-50">
+    <section id="proses" className="py-16 sm:py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <p className="text-[#1B4ED8] font-semibold text-sm uppercase tracking-widest mb-3">Proses Kami</p>
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">Pendekatan Sistematis, Hasil Optimal</h2>
+        <div className="text-center mb-10 sm:mb-16">
+          <p className="text-[#1B4ED8] font-semibold text-xs sm:text-sm uppercase tracking-widest mb-3">Proses Kami</p>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">Pendekatan Sistematis, Hasil Optimal</h2>
         </div>
         <div className="relative">
           {/* Dashed connecting line — sits behind the circles, horizontally centered with them */}

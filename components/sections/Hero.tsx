@@ -15,7 +15,7 @@ export default function Hero() {
     <section
       id="beranda"
       className="relative"
-      style={{ minHeight: '82svh' }}
+      style={{ minHeight: 'min(82svh, 720px)' }}
     >
       {/* ── Background image ── */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -47,11 +47,7 @@ export default function Hero() {
         No flex-center so content can never overflow upward past the navbar.
       */}
       <div
-        className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full"
-        style={{
-          paddingTop: 'calc(64px + 7vh)',
-          paddingBottom: '6vh',
-        }}
+        className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 w-full pt-24 sm:pt-32 pb-10 sm:pb-16"
       >
         <div className="lg:max-w-[52%]">
           <motion.p
