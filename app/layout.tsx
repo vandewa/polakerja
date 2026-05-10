@@ -99,7 +99,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               name: SITE_NAME,
               alternateName: 'Polakerja.id',
               url: SITE_URL,
-              logo: `${SITE_URL}/logo-icon.png`,
+              logo: `${SITE_URL}/LM_Defaut.svg`,
               parentOrganization: {
                 '@type': 'Organization',
                 name: 'Pola Group',

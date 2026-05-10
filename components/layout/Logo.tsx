@@ -9,21 +9,17 @@ export default function Logo({ variant = 'light' }: LogoProps) {
 
   return (
     <div className="flex items-center gap-2.5">
-      {/* P icon — blue square bg on light, blend on dark */}
+      {/* P icon — gradient BG SVG (sama untuk light & dark) */}
       <div
         className="relative shrink-0 rounded-lg overflow-hidden"
-        style={{
-          width: '38px',
-          height: '38px',
-          background: isLight ? '#1B4ED8' : 'transparent',
-        }}
+        style={{ width: '38px', height: '38px' }}
       >
         <Image
-          src="/logo-icon.png"
+          src="/LM_White_BG.svg"
           alt="Polakerja icon"
           fill
+          sizes="38px"
           className="object-cover"
-          style={{ mixBlendMode: 'screen' }}
           priority
         />
       </div>
@@ -33,20 +29,22 @@ export default function Logo({ variant = 'light' }: LogoProps) {
         <span
           className="font-extrabold tracking-tight"
           style={{
-            fontSize: '1.05rem',
+            fontSize: '1.1rem',
             color: isLight ? '#1E3A5F' : '#ffffff',
-            lineHeight: 1.2,
+            lineHeight: 1.1,
           }}
         >
           Polakerja
-          <span style={{ color: isLight ? '#1B4ED8' : '#93C5FD' }}>.id</span>
+          <span style={{ color: isLight ? '#1B4ED8' : '#93C5FD', fontWeight: 700 }}>.id</span>
         </span>
         <span
-          className="uppercase tracking-[0.18em]"
+          className="uppercase"
           style={{
-            fontSize: '0.5rem',
+            fontSize: '0.52rem',
+            letterSpacing: '0.32em',
             color: isLight ? '#9CA3AF' : '#93C5FD',
-            letterSpacing: '0.18em',
+            marginTop: '4px',
+            fontWeight: 600,
           }}
         >
           consulting
