@@ -46,15 +46,15 @@ export default function Footer() {
   return (
     <footer className="text-white pt-12 sm:pt-16 pb-8" style={{ backgroundColor: '#162D4A' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 sm:gap-10 pb-10 sm:pb-12 border-b border-white/10">
-          <div className="md:col-span-1">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 sm:gap-10 pb-10 sm:pb-12 border-b border-white/10">
+          <div className="md:col-span-4">
             <div className="mb-4"><Logo variant="dark" /></div>
-            <p className="text-blue-200 text-sm leading-relaxed">
-              Partner terpercaya untuk ISO, Legalitas & Perizinan, dan Sistem Manajemen bisnis Anda.
+            <p className="text-blue-200 text-sm leading-relaxed max-w-[280px]">
+              Partner terpercaya untuk ISO, Legalitas, Perizinan, serta Sistem Manajemen bisnis Anda.
             </p>
           </div>
           {Object.entries(footerLinks).map(([title, links]) => (
-            <div key={title}>
+            <div key={title} className="md:col-span-2">
               <h4 className="font-bold text-white mb-4">{title}</h4>
               <ul className="flex flex-col gap-3">
                 {links.map((link) => (
@@ -65,7 +65,7 @@ export default function Footer() {
               </ul>
             </div>
           ))}
-          <div id="kontak" className="scroll-mt-24">
+          <div id="kontak" className="md:col-span-4 scroll-mt-24">
             <h4 className="font-bold text-white mb-4">Kontak Kami</h4>
             <ul className="flex flex-col gap-3 text-sm">
               <li className="flex items-start gap-3">
@@ -84,10 +84,10 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <Mail size={14} className="mt-0.5 shrink-0" style={{ color: '#60A5FA' }} />
                 <a
-                  href="mailto:info@polakerja.id"
+                  href="mailto:polakerja.id@gmail.com"
                   className="text-blue-200 hover:text-white transition-colors"
                 >
-                  info@polakerja.id
+                  polakerja.id@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
@@ -106,7 +106,7 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin size={14} className="mt-0.5 shrink-0" style={{ color: '#60A5FA' }} />
                 <span className="text-blue-200 leading-relaxed">
-                  Jl. Dirgantara Raya. Arcadia Residence No. B8,<br />Jatiasih, Bekasi 17426
+                  Jl. Dirgantara Raya, Arcadia Residence No. B8, Jatiasih, Bekasi 17426
                 </span>
               </li>
             </ul>
@@ -118,14 +118,14 @@ export default function Footer() {
             <span>Part of</span>
             <div
               className="relative rounded overflow-hidden shrink-0"
-              style={{ width: 14, height: 14, background: '#1B4ED8' }}
+              style={{ width: 14, height: 14 }}
             >
               <Image
-                src="/logo-icon.png"
+                src="/LM_White_BG.svg"
                 alt=""
                 fill
+                sizes="14px"
                 className="object-cover"
-                style={{ mixBlendMode: 'screen' }}
               />
             </div>
             <span className="text-white font-semibold">Pola Group</span>

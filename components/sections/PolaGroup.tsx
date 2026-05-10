@@ -43,14 +43,14 @@ export default function PolaGroup() {
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-gray-200 shadow-sm mb-5">
             <div
               className="relative rounded overflow-hidden shrink-0"
-              style={{ width: 14, height: 14, background: '#1B4ED8' }}
+              style={{ width: 14, height: 14 }}
             >
               <Image
-                src="/logo-icon.png"
+                src="/LM_White_BG.svg"
                 alt=""
                 fill
+                sizes="14px"
                 className="object-cover"
-                style={{ mixBlendMode: 'screen' }}
               />
             </div>
             <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-700">
@@ -100,7 +100,7 @@ export default function PolaGroup() {
               Polakerja Consulting
             </p>
             <h3 className="font-extrabold text-gray-900 text-xl lg:text-2xl mb-3">
-              ISO, Legalitas &amp; Perizinan
+              ISO, Legalitas, dan Perizinan
             </h3>
             <p className="text-gray-500 text-sm leading-relaxed mb-5">
               Bangun fondasi compliance bisnis Anda — dari sertifikasi standar
@@ -191,7 +191,7 @@ export default function PolaGroup() {
               Polapajak Consulting
             </p>
             <h3 className="relative font-extrabold text-white text-xl lg:text-2xl mb-3">
-              Pajak &amp; Akuntansi
+              Pajak, Akuntansi, dan Audit
             </h3>
 
             {/* Trust pills */}

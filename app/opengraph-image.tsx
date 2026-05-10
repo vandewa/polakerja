@@ -1,11 +1,15 @@
 import { ImageResponse } from 'next/og'
+import { readFile } from 'node:fs/promises'
+import path from 'node:path'
 
-export const runtime = 'edge'
-export const alt = 'Polakerja Consulting — Konsultan ISO, Legalitas & Perizinan Terpercaya'
+export const alt = 'Polakerja Consulting — Konsultan ISO, Legalitas, dan Perizinan Terpercaya'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
-export default function Image() {
+export default async function Image() {
+  const svgBuffer = await readFile(path.join(process.cwd(), 'public/LM_White_BG.svg'))
+  const logoSrc = `data:image/svg+xml;base64,${svgBuffer.toString('base64')}`
+
   return new ImageResponse(
     (
       <div
@@ -42,23 +46,19 @@ export default function Image() {
 
         {/* Brand row */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 18, marginBottom: 36 }}>
-          <div
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={logoSrc}
+            alt=""
+            width={72}
+            height={72}
             style={{
               width: 72,
               height: 72,
               borderRadius: 18,
-              background: '#FFFFFF',
-              color: '#1B4ED8',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: 44,
-              fontWeight: 800,
               boxShadow: '0 8px 24px rgba(0,0,0,0.25)',
             }}
-          >
-            P
-          </div>
+          />
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <div style={{ fontSize: 32, fontWeight: 800, letterSpacing: -0.5 }}>
               Polakerja.id
