@@ -244,7 +244,7 @@ export default function PolaGroup() {
                 boxShadow: '0 8px 20px rgba(15,23,42,0.18)',
               }}
             >
-              Kunjungi PolaPajak
+              Kunjungi Polapajak
               <ArrowRight
                 size={16}
                 className="transition-transform group-hover:translate-x-0.5"

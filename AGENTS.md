@@ -12,6 +12,24 @@ Before touching any code in this project, **read `docs/architecture.md`** to und
 
 For significant changes, also read relevant `docs/plans/` to understand prior design decisions.
 
+## Deploy ke production
+
+**Auto-deploy via GitHub TIDAK reliable** untuk project ini — push ke `master` di GitHub tidak men-trigger build Vercel secara otomatis (terbukti pada 2026-05-10: push sukses tapi production tetap versi 2 hari lalu sampai dideploy manual). **Selalu deploy manual** dengan Vercel CLI:
+
+```bash
+# dari root project
+npx -y vercel@latest --prod --yes
+```
+
+Project terlink ke scope `dfundewananta-8668s-projects`, project name `polakerja`. Kalau `.vercel/project.json` stale (orgId tidak match), re-link dulu:
+
+```bash
+rm -rf .vercel
+npx -y vercel@latest link --yes --project polakerja
+```
+
+Push ke GitHub `master` tetap dilakukan untuk source-of-truth — tapi harus diikuti `vercel --prod` manual untuk benar-benar live.
+
 <!-- BEGIN:nextjs-agent-rules -->
 ## This is NOT the Next.js you know
 
