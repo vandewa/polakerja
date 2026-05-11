@@ -95,7 +95,7 @@ export default function Footer() {
                   <InstagramGlyph size={14} />
                 </span>
                 <a
-                  href="https://www.instagram.com/polakerja.id?igsh=MTg0amxvMzFsajE1dA=="
+                  href="https://www.instagram.com/polakerja.id"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-200 hover:text-white transition-colors"
