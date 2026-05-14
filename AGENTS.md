@@ -3,7 +3,7 @@
 ## REQUIRED: Read architecture guide first
 
 Before touching any code in this project, **read `docs/architecture.md`** to understand:
-- The "1 Next.js, 2 domain" pattern (polakerja.com + webinar.polakerja.com via `proxy.ts`)
+- The "1 Next.js, 2 domain" pattern (polakerja.id + webinar.polakerja.id via `proxy.ts`)
 - Registry + Dispatcher pattern (`lib/webinars.ts` + `components/webinar/pages/registry.ts` + `app/webinar/[slug]/page.tsx`)
 - Zero-storage filosofi (semua aset visual via URL eksternal)
 - Mayar.id integration (URL redirect only — no API/webhook)

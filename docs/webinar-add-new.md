@@ -69,12 +69,12 @@ Lihat `docs/webinar-intake.md` untuk workflow intake klien lengkap.
 
 6. **Verify lokal:** `npm run dev` → buka `webinar.localhost:3000/[slug]`
 
-7. **Push & deploy:** PR → merge → Vercel auto deploy → live di `webinar.polakerja.com/[slug]`
+7. **Push & deploy:** PR → merge → Vercel auto deploy → live di `webinar.polakerja.id/[slug]`
 
 ## Setup subdomain di Vercel (one-time)
 
 1. DNS provider: tambah CNAME record `webinar` → `cname.vercel-dns.com`
-2. Vercel project → Settings → Domains → Add `webinar.polakerja.com`
+2. Vercel project → Settings → Domains → Add `webinar.polakerja.id`
 3. Vercel auto-issue SSL cert
 
 ## Block components yang tersedia

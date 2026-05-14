@@ -1,6 +1,6 @@
 # Webinar Intake Workflow
 
-> Untuk klien Polakerja yang mau jadwalin webinar baru di webinar.polakerja.com.
+> Untuk klien Polakerja yang mau jadwalin webinar baru di webinar.polakerja.id.
 
 ## Alur
 

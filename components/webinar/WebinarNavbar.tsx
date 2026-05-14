@@ -13,10 +13,10 @@ export default function WebinarNavbar() {
           </span>
         </Link>
         <a
-          href="https://polakerja.com"
+          href="https://polakerja.id"
           className="text-sm text-neutral-600 hover:text-neutral-900 transition"
         >
-          ← Polakerja.com
+          ← Polakerja.id
         </a>
       </div>
     </header>

@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next'
 import { webinars } from '@/lib/webinars'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = 'https://webinar.polakerja.com'
+  const base = 'https://webinar.polakerja.id'
   return [
     { url: `${base}/`, changeFrequency: 'weekly', priority: 1 },
     ...webinars.map((w) => ({

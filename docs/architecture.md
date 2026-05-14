@@ -13,7 +13,7 @@
 Project ini melayani **2 domain** dari **1 codebase Next.js** yang sama:
 
 ```
-polakerja.com               webinar.polakerja.com
+polakerja.id               webinar.polakerja.id
        │                            │
        └────────────┬───────────────┘
                     ▼
@@ -25,22 +25,22 @@ polakerja.com               webinar.polakerja.com
 - DNS arahkan keduanya ke server Vercel yang sama.
 - Next.js baca header `Host` saat request masuk.
 - File `proxy.ts` di root project deteksi host → rewrite path internal.
-- Kalau host `webinar.polakerja.com`, semua URL di-rewrite ke folder `/app/webinar/*`.
+- Kalau host `webinar.polakerja.id`, semua URL di-rewrite ke folder `/app/webinar/*`.
 
 **Why begini:** reuse Logo, Footer, Tailwind theme, font, deploy pipeline. Daripada bikin 2 Next.js project terpisah.
 
 ```
 URL user lihat                    Internal Next.js routing
 ─────────────────                 ──────────────────────────
-polakerja.com/             ─────► app/page.tsx
-polakerja.com/about        ─────► app/about/page.tsx
+polakerja.id/             ─────► app/page.tsx
+polakerja.id/about        ─────► app/about/page.tsx
 
-webinar.polakerja.com/             ┐
+webinar.polakerja.id/             ┐
                                     ├ proxy.ts rewrite:
                                     ▼
                           ─────►   app/webinar/page.tsx
 
-webinar.polakerja.com/iso-9001     ┐
+webinar.polakerja.id/iso-9001     ┐
                                     ├ proxy.ts rewrite:
                                     ▼
                           ─────►   app/webinar/[slug]/page.tsx
@@ -58,7 +58,7 @@ polakerja/
 ├── next.config.ts                    ← remotePatterns untuk gambar eksternal
 │
 ├── app/
-│   ├── page.tsx                      ← Landing utama polakerja.com
+│   ├── page.tsx                      ← Landing utama polakerja.id
 │   ├── layout.tsx                    ← Root layout
 │   │
 │   └── webinar/                      ← Semua route subdomain webinar
